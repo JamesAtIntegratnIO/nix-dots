@@ -25,5 +25,16 @@ in {
         };
       }
     )
+    (mkIf (cfg.enable && (builtins.elem "golang" cfg.langs)) {
+      users.users.${username} = {
+        packages = with pkgs; [
+          go
+          gopls
+          go-outline
+          golangci-lint
+          gocode
+        ];
+      };
+    })
   ];
 }

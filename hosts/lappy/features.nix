@@ -20,6 +20,7 @@ in {
       };
       dev = {
         enable = true;
+        langs = ["golang"];
       };
       editor = {
         enable = true;
