@@ -13,8 +13,12 @@ in {
     ./options.nix
   ];
   config = mkMerge [
-    (mkIf (cfg.discord) {
-      users.users.${username}.programs.discord.enable = true;
+    (mkIf (cfg.discord && (graphics.type != null)) {
+      users.users.${username} = {
+        packages = with pkgs; [
+          discord-ptb
+        ];
+      };
     })
   ];
 }

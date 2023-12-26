@@ -5,8 +5,9 @@
     ./dev
     ./editor
     ./graphics
+    ./network
     ./security
     ./social
-    ./network
+    ./terminal
   ];
 }
