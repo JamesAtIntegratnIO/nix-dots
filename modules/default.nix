@@ -6,6 +6,7 @@
     ./editor
     ./graphics
     ./security
+    ./social
     ./network
   ];
 }
