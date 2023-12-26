@@ -33,7 +33,7 @@ in {
       };
       social = {
         discord = true;
-      }
+      };
       network = {
         enable = true;
         hostName = "lappy";
