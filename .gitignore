@@ -4,3 +4,4 @@ secret/*
 pki/*
 *.crt
 *.key
+*.qcow2
