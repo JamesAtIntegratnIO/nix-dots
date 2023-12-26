@@ -31,6 +31,9 @@ in {
       security = {
         yubikey.enable = true;
       };
+      social = {
+        discord = true;
+      }
       network = {
         enable = true;
         hostName = "lappy";
