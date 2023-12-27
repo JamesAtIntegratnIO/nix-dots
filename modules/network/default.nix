@@ -10,7 +10,7 @@ with lib; let
   inherit (config.modules) graphics;
   cfg = config.modules.network;
 in {
-  imports = [./options.nix];
+  imports = [./options.nix ./tailscale.nix];
 
   config = mkMerge [
     (mkIf (cfg.hostName != null) {
@@ -19,8 +19,8 @@ in {
     (mkIf cfg.enable {
       networking = {
         networkmanager = {
-        enable = true;
-        appendNameservers = cfg.additionalNameServers;
+          enable = true;
+          appendNameservers = cfg.additionalNameServers;
           wifi = {
             backend = "wpa_supplicant";
           };

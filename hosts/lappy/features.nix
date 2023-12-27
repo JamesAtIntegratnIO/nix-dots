@@ -41,7 +41,8 @@ in {
         additionalNameServers = ["192.168.16.53"];
         bluetooth.enable = true;
         ssh.enable = true;
-        firewall.enable = false;
+        firewall.enable = true;
+        tailscale = true;
       };
     };
     age = {

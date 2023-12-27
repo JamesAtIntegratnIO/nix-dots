@@ -46,5 +46,6 @@ with lib; {
         example = [53];
       };
     };
+    tailscale = mkEnableOption "tailscale";
   };
 }
