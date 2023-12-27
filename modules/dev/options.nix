@@ -10,5 +10,15 @@ with lib; {
         List of languages to enable dev tools for.
       '';
     };
+    devops = {
+      tools = mkOption {
+        type = types.listOf types.str;
+        default = [];
+        example = ["kubernetes" "terraform" "aws" "gcp"];
+        description = ''
+          List of devops tools to enable.
+        '';
+      };
+    };
   };
 }

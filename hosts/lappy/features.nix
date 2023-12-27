@@ -21,6 +21,7 @@ in {
       dev = {
         enable = true;
         langs = ["golang"];
+        devops.tools = ["kubernetes"];
       };
       editor = {
         enable = true;

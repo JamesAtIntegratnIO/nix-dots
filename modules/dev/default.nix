@@ -11,6 +11,7 @@ with lib; let
 in {
   imports = [
     ./options.nix
+    ./devops.nix
   ];
   config = mkMerge [
     (
@@ -25,7 +26,7 @@ in {
         };
       }
     )
-    (mkIf (cfg.enable && (builtins.elem "golang" cfg.langs)) {
+    (mkIf (builtins.elem "golang" cfg.langs) {
       users.users.${username} = {
         packages = with pkgs; [
           go
