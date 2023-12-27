@@ -20,5 +20,12 @@ in {
         ];
       };
     })
+    (mkIf (cfg.slack && (graphics.type != null)) {
+      users.users.${username} = {
+        packages = with pkgs; [
+          slack
+        ];
+      };
+    })
   ];
 }
