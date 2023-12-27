@@ -42,7 +42,10 @@ in {
         bluetooth.enable = true;
         ssh.enable = true;
         firewall.enable = true;
-        tailscale = true;
+        tailscale = {
+          enable = true;
+          permitCertUid = "boboysddda@gmail.com";
+        };
       };
     };
     age = {

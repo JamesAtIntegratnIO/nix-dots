@@ -7,18 +7,16 @@
 with lib; let
   cfg = config.modules.network;
 in {
-  config = mkIf (cfg.tailscale) {
+  config = mkIf (cfg.tailscale.enable) {
     environment.systemPackages = [pkgs.tailscale];
     services.tailscale = {
       enable = true;
-      permitCertUid = "boboysdadda@gmail.com";
-      interfaceName = "tls0";
+      permitCertUid = cfg.tailscale.permitCertUid;
+      interfaceName = cfg.tailscale.interfaceName;
       port = 41641;
-    };
-    networking.firewall = {
-      trustedInterfaces = ["tls0"];
-      checkReversePath = "loose";
-      allowedUDPPorts = [config.services.tailscale.port];
+      openFirewall = true;
+      useRoutingFeatures = cfg.tailscale.routingFeatures;
+      extraUpFlags = cfg.tailscale.extraUpFlags;
     };
   };
 }
