@@ -2,6 +2,7 @@
   imports = [
     ./browser
     ./desktop
+    ./display-manager
     ./dev
     ./editor
     ./graphics

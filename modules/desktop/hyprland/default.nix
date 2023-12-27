@@ -55,19 +55,6 @@ in {
             systemd.enable = true;
           };
         };
-        services = {
-          xserver = {
-            enable = true;
-            layout = "us";
-            xkbVariant = "";
-            displayManager = {
-              defaultSession = "hyprland";
-              sddm = {
-                enable = true;
-              };
-            };
-          };
-        };
       }
     )
   ];

@@ -18,6 +18,10 @@ in {
       desktop = {
         desktop = "hyprland";
       };
+      displayManager = {
+        greeter = "tuigreet";
+        defaultSession = "Hyprland";
+      };
       dev = {
         enable = true;
         langs = ["golang"];
