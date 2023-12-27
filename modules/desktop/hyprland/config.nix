@@ -133,7 +133,7 @@ in {
             # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
             bind = [
               "$mainMod, Q, exec, $terminal"
-              # bind = $mainMod, C, killactive,
+              "$mainMod, K, killactive"
               "$mainMod, M, exit,"
               "$mainMod, E, exec, $fileManager"
               "$mainMod, V, togglefloating,"
@@ -168,11 +168,13 @@ in {
               "$mainMod SHIFT, 9, movetoworkspace, 9"
               "$mainMod SHIFT, 0, movetoworkspace, 10"
               # Example special workspace (scratchpad)
-              "$mainMod, S, togglespecialworkspace, magic"
-              "$mainMod SHIFT, S, movetoworkspace, special:magic"
+              # "$mainMod, S, togglespecialworkspace, magic"
+              # "$mainMod SHIFT, S, movetoworkspace, special:magic"
               # Scroll through existing workspaces with mainMod + scroll
               "$mainMod, mouse_down, workspace, e+1"
               "$mainMod, mouse_up, workspace, e-1"
+              # Screenshot Area
+              "$mainMod SHIFT, S, exec, grimblast copy area"
             ];
             bindm = [
               "$mainMod, mouse:272, movewindow"

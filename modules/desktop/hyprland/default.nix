@@ -37,6 +37,9 @@ in {
           };
         };
         fonts.fontconfig.enable = true;
+        environment.systemPackages = with pkgs; [
+          inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+        ];
         home-manager.users.${username} = {
           home.packages = with pkgs; [
             dolphin
