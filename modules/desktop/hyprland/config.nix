@@ -21,6 +21,8 @@ in {
               "$fileManager" = "dolphin";
               "$menu" = "rofi -show drun";
 
+              "$lockCommand" = "gtklock -T 60 -H -i";
+
               env = [
                 "XCURSOR_SIZE,24"
                 "QT_QPA_PLATFORMTHEME,qt5ct" # change to qt6ct if you have that
@@ -41,6 +43,12 @@ in {
               ];
               exec-once = [
                 "dunst"
+                # IDLE HANDLER
+                ''
+                  swayidle -w timeout 1200 "$lockCommand"
+                  timeout 1800 "hyprctl dispatch dpms off"
+                  resume "hyprctl dispatch dpms on"
+                ''
               ];
               input = {
                 kb_layout = "us";
@@ -176,7 +184,10 @@ in {
                 # Screenshot Area
                 "$mainMod SHIFT, S, exec, grimblast copy area"
                 # Lockscreen
-                "$mainMod SHIFT, L, exec, gtklock -i"
+                "$mainMod SHIFT, L, exec, $lockCommand"
+                # Rofi
+                "$mainMod SHIFT, P, exec, rofi -show p -modi p:rofi-power-menu"
+                "$mainMod SHIFT, B, exec, rofi-bluetooth"
               ];
               bindm = [
                 "$mainMod, mouse:272, movewindow"
