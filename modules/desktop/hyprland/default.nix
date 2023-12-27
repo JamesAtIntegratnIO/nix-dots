@@ -25,6 +25,7 @@ in {
     ./config.nix
     ./hyprpaper.nix
     ./waybar.nix
+    ./nwg-panel.nix
   ];
   config = mkMerge [
     (
@@ -40,14 +41,16 @@ in {
         environment.systemPackages = with pkgs; [
           inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
         ];
+        #This line is the magic that makes gtklock work
+        security.pam.services.gtklock.text = lib.readFile "${pkgs.gtklock}/etc/pam.d/gtklock";
         home-manager.users.${username} = {
           home.packages = with pkgs; [
             dolphin
             rofi
             dunst
-            waybar
             lid
             font-awesome
+            gtklock
           ];
           wayland.windowManager.hyprland = {
             enable = true;

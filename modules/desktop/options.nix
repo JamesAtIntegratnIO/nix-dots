@@ -8,6 +8,14 @@ with lib; {
         The desktop environment to use.
       '';
     };
+    panel = mkOption {
+      type = types.enum ["waybar" "nwg-panel" null];
+      default = null;
+      description = ''
+        The panel to use.
+      '';
+      example = "waybar";
+    };
 
     screenWidth = mkOption {
       type = types.int;

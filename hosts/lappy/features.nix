@@ -17,6 +17,7 @@ in {
       };
       desktop = {
         desktop = "hyprland";
+        panel = "waybar";
       };
       displayManager = {
         greeter = "tuigreet";

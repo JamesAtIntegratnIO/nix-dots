@@ -108,7 +108,10 @@ with lib; let
     };
   };
 in {
-  config = mkIf (cfg.desktop == "hyprland") {
+  config = mkIf ((cfg.desktop == "hyprland") && (cfg.panel == "waybar")) {
+    environment.systemPackages = with pkgs; [
+      waybar
+    ];
     home-manager.users.${username} = {...}: {
       xdg.configFile.waybar = {
         target = "waybar/config";
