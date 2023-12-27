@@ -21,7 +21,8 @@ in {
           xdg.configFile."hypr/hyprpaper.conf".text = ''
             preload = ~/.config/hypr/paper/wallpaper1.jpg
             preload = ~/.config/hypr/paper/wallpaper2.jpg
-            wallpaper = ,!/.config/hypr/paper/wallpaper1.jpg
+            wallpaper = ,~/.config/hypr/paper/wallpaper1.jpg
+            ipc = off
           '';
         };
 
