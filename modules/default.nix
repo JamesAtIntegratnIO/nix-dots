@@ -7,6 +7,7 @@
     ./graphics
     ./network
     ./security
+    ./services
     ./social
     ./terminal
   ];
