@@ -188,10 +188,22 @@ in {
                 # Rofi
                 "$mainMod SHIFT, P, exec, rofi -show p -modi p:rofi-power-menu"
                 "$mainMod SHIFT, B, exec, rofi-bluetooth"
+                # Mute
+                ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+                ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
               ];
               bindm = [
                 "$mainMod, mouse:272, movewindow"
                 "$mainMod, mouse:273, resizewindow"
+              ];
+
+              binde = [
+                # Volume
+                ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+"
+                ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-"
+                # Brightness
+                ", xf86monbrightnessup, exec, brightnessctl set 10%+"
+                ", xf86monbrightnessdown, exec, brightnessctl set 10%-"
               ];
             }
             (mkIf (cfg.panel == "waybar") {

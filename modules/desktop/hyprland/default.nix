@@ -50,6 +50,7 @@ in {
             rofi-wayland
             rofi-power-menu
             rofi-bluetooth
+            brightnessctl
             dunst
             lid
             font-awesome
