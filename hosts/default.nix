@@ -16,10 +16,23 @@
     ];
   };
 
+  live-options = {
+    specialArgs = {inherit inputs self;};
+    modules = [
+      home-manager.nixosModules.home-manager
+      ../nixos.nix
+      ../user.nix
+      ../live.nix
+    ];
+  };
+
   mkSystem = sysName: nixpkgs.lib.nixosSystem ((import ./${sysName}) {inherit base-options;});
+  mkLiveSystem = sysName: nixpkgs.lib.nixosSystem ((import ./${sysName}) {base-options = live-options;});
 
   systems = map (sysName: {${sysName} = mkSystem sysName;}) systemNames;
 
-  mergedSystems = nixpkgs.lib.foldr (a: b: b // a) {} systems;
+  liveSystems = map (sysName: {"${sysName}-live" = mkLiveSystem sysName;}) systemNames;
+
+  mergedSystems = nixpkgs.lib.foldr (coming: final: final // coming) {} (systems ++ liveSystems);
 in
   mergedSystems

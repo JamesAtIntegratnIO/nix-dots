@@ -25,7 +25,7 @@ in {
             backend = "wpa_supplicant";
           };
         };
-        wireless.userControlled.enable = true;
+        # wireless.userControlled.enable = true;
       };
     })
     (mkIf cfg.bluetooth.enable {
