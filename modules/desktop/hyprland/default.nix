@@ -65,6 +65,10 @@ in {
             xwayland.enable = true;
             systemd.enable = true;
           };
+          xdg.configFile = {
+            "hypr/rokid-attached.sh".source = ./rokid-attached.sh;
+            "hypr/rokid-detached.sh".source = ./rokid-detached.sh;
+          };
         };
       }
     )

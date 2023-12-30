@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./browser
     ./desktop
@@ -11,5 +11,11 @@
     ./services
     ./social
     ./terminal
+  ];
+
+  environment.systemPackages = with pkgs; [
+    bash
+    zsh
+    fish
   ];
 }

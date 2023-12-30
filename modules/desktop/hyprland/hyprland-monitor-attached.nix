@@ -1,22 +1,31 @@
-# FILEPATH: /home/boboysdadda/Projects/nix-dots/modules/desktop/hyprland/hyprland-monitor-attach.nix
 {pkgs, ...}: let
-  hyprland-monitor-attached = import (
-    pkgs.rustPlatform.buildRustPackage {
-      name = "hyprland-monitor-attach";
-      src = pkgs.fetchFromGitHub {
-        owner = "coffebar";
-        repo = "hyprland-monitor-attached";
-        rev = "0.1";
-        sha256 = "sha256-CY6Tv2ATZHXRU/I2n9UH2lHF0F+TC7X5U4yZ5iY9QC0="; # Replace with the actual SHA256 hash of the package
-      };
-      cargoHash = "sha256-cEeQnkWoGJT/FmT3h10vEErota7kTgrPgib3ZiiVWv4="; # Replace with the actual SHA256 hash of the Cargo.lock file
-    }
-  );
+  hyprland-monitor-attached = pkgs.stdenv.mkDerivation {
+    nativeBuildInputs = with pkgs; [rustc cargo];
+    name = "hyprland-monitor-attach";
+    src = pkgs.fetchFromGitHub {
+      owner = "coffebar";
+      repo = "hyprland-monitor-attached";
+      rev = "72551d6";
+      sha256 = "sha256-McenpaoEjQIB709VlLkyVGoUwVoMe7TJPb8Lrh1efw8="; # Replace with the actual SHA256 hash of the package
+    };
+    buildPhase = ''
+      cargo build --release --locked
+    '';
+    installPhase = ''
+      cargo install --path . --root $out
+    '';
+    cargoSha256 = "sha256-cEeQnkWoGJT/FmT3h10vEErota7kTgrPgib3ZiiVWv4="; # Replace with the actual SHA256 hash of the Cargo.lock file
+  };
+
+  rokid-attached = pkgs.writeShellScriptBin "rokid-attached" (builtins.readFile ./rokid-attached.sh);
+  rokid-detached = pkgs.writeShellScriptBin "rokid-detached" (builtins.readFile ./rokid-detached.sh);
 in {
   # Your Nix expressions here
   config = {
     environment.systemPackages = with pkgs; [
       hyprland-monitor-attached
+      rokid-attached
+      rokid-detached
     ];
   };
 }

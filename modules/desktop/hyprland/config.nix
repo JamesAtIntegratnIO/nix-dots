@@ -31,7 +31,7 @@ in {
               monitor = [
                 "eDP-1,1920x1200,3840x0,1"
                 "DP-6,3840x2160,0x0,1"
-                "DP-2,1920x1080,3840x0,1"
+                "DP-2,1920x1080,auto,1"
               ];
               # monitor = [",preferred,auto,auto"];
 
@@ -49,6 +49,7 @@ in {
                   timeout 600 "hyprctl dispatch dpms off"
                   resume "hyprctl dispatch dpms on"
                 ''
+                "/usr/bin/env hyprland-monitor-attached /run/current-system/sw/bin/rokid-attached /run/current-system/sw/bin/rokid-detached"
               ];
               input = {
                 kb_layout = "us";
