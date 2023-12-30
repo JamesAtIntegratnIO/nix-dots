@@ -57,6 +57,7 @@ in {
             gtklock
             nerdfonts
             swayidle
+            xdg-utils
           ];
           wayland.windowManager.hyprland = {
             enable = true;
