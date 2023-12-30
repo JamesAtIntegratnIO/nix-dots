@@ -74,25 +74,6 @@ in {
         "x-systemd.idle-timeout=600" # disconnect if not used for 10 minutes. automount will reconnect on next access
       ];
     };
-
-    boot = {
-      kernelPackages = pkgs.linuxPackages_6_1;
-      # Bootloader.
-      loader = {
-        systemd-boot.enable = true;
-        efi = {
-          canTouchEfiVariables = true;
-          efiSysMountPoint = "/boot/efi";
-        };
-      };
-      # Enable building for ARM
-      binfmt.emulatedSystems = ["aarch64-linux"];
-      # Setup keyfile
-      # initrd.secrets = {
-      #   "/crypto_keyfile.bin" = null;
-      # };
-      extraModprobeConfig = ''options bluetooth disable_ertm=1 '';
-    };
     hardware = {
       # For zsa keyboards
       keyboard.zsa.enable = true;
