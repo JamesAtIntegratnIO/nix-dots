@@ -26,6 +26,7 @@ in {
     ./hyprpaper.nix
     ./waybar.nix
     ./nwg-panel.nix
+    ./hyprland-monitor-attached.nix
   ];
   config = mkMerge [
     (
