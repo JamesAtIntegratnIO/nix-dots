@@ -40,6 +40,7 @@ in {
       };
       social = {
         discord = true;
+        slack = true;
       };
       network = {
         enable = true;
@@ -85,6 +86,8 @@ in {
       enableAllFirmware = true;
       # for the xbox controller
       xpadneo.enable = true;
+      enableRedistributableFirmware = true;
+      cpu.intel.updateMicrocode = true;
     };
   };
 }

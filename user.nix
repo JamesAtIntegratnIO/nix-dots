@@ -12,7 +12,7 @@ in {
       };
       ${username} = {
         isNormalUser = true;
-        extraGroups = ["wheel"];
+        extraGroups = ["wheel" "audio" "video" "networkmanager" "docker" "libvirt"];
         initialPassword = username;
       };
     };

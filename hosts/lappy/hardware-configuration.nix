@@ -33,7 +33,7 @@
     # initrd.secrets = {
     #   "/crypto_keyfile.bin" = null;
     # };
-    extraModprobeConfig = ''options bluetooth disable_ertm=1 '';
+    extraModprobeConfig = ''options bluetooth disable_ertm=1 snd slots=snd-hda-intel'';
   };
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXROOT";

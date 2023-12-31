@@ -102,7 +102,7 @@ with lib; let
         car = "";
         default = ["" "" ""];
       };
-      on-click = "${pactl} set-sink-mute @DEFAULT_SINK@ toggle";
+      on-click = "~/.config/waybar/scripts/audio-switch.sh";
       on-scroll-up = "${pactl} set-sink-volume @DEFAULT_SINK@ +1%";
       on-scroll-down = "${pactl} set-sink-volume @DEFAULT_SINK@ -1%";
     };
@@ -111,11 +111,18 @@ in {
   config = mkIf ((cfg.desktop == "hyprland") && (cfg.panel == "waybar")) {
     environment.systemPackages = with pkgs; [
       waybar
+      python3
     ];
     home-manager.users.${username} = {...}: {
-      xdg.configFile.waybar = {
-        target = "waybar/config";
-        text = builtins.toJSON conf;
+      xdg.configFile = {
+        waybar = {
+          target = "waybar/config";
+          text = builtins.toJSON conf;
+        };
+        audio-switch = {
+          target = "waybar/scripts/audio-switch.sh";
+          source = ./audio-switch.sh;
+        };
       };
 
       xdg.configFile.waybar-style = {
