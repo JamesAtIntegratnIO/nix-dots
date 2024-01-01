@@ -20,6 +20,8 @@ with lib; let
 
   username = import ../../../username.nix;
   cfg = config.modules.desktop;
+
+  rofi-wifi-menu = pkgs.writeScriptBin "rofi-wifi-menu" (builtins.readFile ./rofi-wifi-menu.sh);
 in {
   imports = [
     ./config.nix
@@ -41,6 +43,7 @@ in {
         fonts.fontconfig.enable = true;
         environment.systemPackages = with pkgs; [
           inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+          rofi-wifi-menu
         ];
         # This line is the magic that makes gtklock work
         security.pam.services.gtklock.text = lib.readFile "${pkgs.gtklock}/etc/pam.d/gtklock";

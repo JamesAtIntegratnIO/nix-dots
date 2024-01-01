@@ -16,6 +16,7 @@ with lib; let
     modules-right = [
       "idle_inhibitor"
       "pulseaudio"
+      "bluetooth"
       "network"
       "cpu"
       "memory"
@@ -79,12 +80,23 @@ with lib; let
       format-alt = "{time} {icon}";
       format-icons = ["" "" "" "" ""];
     };
+    bluetooth = {
+      format = " {status}";
+      format-connected = " {device_alias}";
+      format-connected-abattery = " {device_alias} {device_battery_percentage}%";
+      tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+      tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+      tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+      tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+      on-click = "/usr/bin/env rofi-bluetooth";
+    };
     network = {
       format-wifi = "{essid} ({signalStrength}%) ";
       format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
       format-linked = "{ifname} (No IP) ";
       format-disconnected = "Disconnected ⚠";
       format-alt = "{ifname}: {ipaddr}/{cidr}";
+      on-click = "/usr/bin/env rofi-wifi-menu";
     };
     pulseaudio = {
       format = "{volume}% {icon} {format_source}";
