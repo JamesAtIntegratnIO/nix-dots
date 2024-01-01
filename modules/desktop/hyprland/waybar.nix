@@ -102,7 +102,8 @@ with lib; let
         car = "";
         default = ["" "" ""];
       };
-      on-click = "~/.config/waybar/scripts/audio-switch.sh";
+      on-click = "~/.config/waybar/scripts/audio-switch.sh speaker";
+      on-click-right = "~/.config/waybar/scripts/audio-switch.sh mic";
       on-scroll-up = "${pactl} set-sink-volume @DEFAULT_SINK@ +1%";
       on-scroll-down = "${pactl} set-sink-volume @DEFAULT_SINK@ -1%";
     };
