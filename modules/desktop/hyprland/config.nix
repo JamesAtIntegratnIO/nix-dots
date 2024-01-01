@@ -30,8 +30,13 @@ in {
               # Monitor config
               monitor = [
                 "eDP-1,1920x1200,3840x0,1"
+                # Monitor got renamed for some rando reason
+                # so there are 2 matching entries here
+                # The way wayland does this is dumb
                 "DP-6,3840x2160,0x0,1"
-                "DP-2,1920x1080,auto,1"
+                "DP-7,3840x2160,0x0,1"
+
+                "DP-2,1920x1080,3840x1200,1"
               ];
               # monitor = [",preferred,auto,auto"];
 
