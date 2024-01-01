@@ -35,6 +35,10 @@ in {
       graphics = {
         type = "intel";
       };
+      media = {
+        spotify = "spotify-tui";
+        plex = true;
+      };
       security = {
         yubikey.enable = true;
       };

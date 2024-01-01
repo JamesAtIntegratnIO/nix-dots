@@ -6,6 +6,7 @@
     ./dev
     ./editor
     ./graphics
+    ./media
     ./network
     ./security
     ./services
