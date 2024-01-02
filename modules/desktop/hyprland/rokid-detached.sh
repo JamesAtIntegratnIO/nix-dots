@@ -6,22 +6,6 @@ monitor_name=$1
 
 # Get the list of all monitors in JSON format
 monitors=$(hyprctl monitors -j all)
-
- # Decode the monitor JSON object
-if [ "$monitor_name" == "DP-2" ]; then
-  echo "$monitors" | jq -c '.[]' | while read -r monitor; do
-    name=$(echo "$monitor" | jq -r '.name')
-    width=$(echo "$monitor" | jq -r '.width')
-    height=$(echo "$monitor" | jq -r '.height')
-    # Check if the monitor is the one specified by the user
-    if [ "$name" != "$monitor_name" ]; then
-      # Enable the monitor
-      hyprctl keyword monitor "$name,${width}x${height},$(position "$name"),1"
-
-    fi
-  done
-fi
-
 position () {
   position=""
   model=$(get_model "$1")
@@ -45,3 +29,19 @@ get_model () {
   model=$(echo "$monitors" | jq -r ".[] | select(.name == \"${1}\") | .model")
   echo "$model"
 }
+
+ # Decode the monitor JSON object
+if [ "$monitor_name" == "DP-2" ]; then
+  echo "$monitors" | jq -c '.[]' | while read -r monitor; do
+    name=$(echo "$monitor" | jq -r '.name')
+    width=$(echo "$monitor" | jq -r '.width')
+    height=$(echo "$monitor" | jq -r '.height')
+    # Check if the monitor is the one specified by the user
+    if [ "$name" != "$monitor_name" ]; then
+      # Enable the monitor
+      hyprctl keyword monitor "$name,${width}x${height},$(position "$name"),1"
+
+    fi
+  done
+fi
+
