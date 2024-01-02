@@ -12,7 +12,7 @@ with lib; let
   pactl = "${pkgs.pulseaudioFull}/bin/pactl";
   conf = {
     layer = "top";
-    modules-left = ["sway/workspaces" "sway/mode"];
+    modules-left = ["hyprland/workspaces" "hyprland/mode"];
     modules-right = [
       "idle_inhibitor"
       "pulseaudio"
@@ -23,18 +23,25 @@ with lib; let
       "temperature"
       "backlight"
       "battery"
-      "clock"
       "tray"
     ];
-    "sway/mode" = {format = ''<span style="italic">{}</span>'';};
-    "sway/workspaces" = {
+    modules-center = ["clock"];
+    "hyprland/mode" = {format = ''<span style="italic">{}</span>'';};
+    "hyprland/workspaces" = {
       all-outputs = true;
-      format = "{name}:{icon}";
+      format = "{icon}";
+      on-click = "activate";
       format-icons = {
+        "1" = "";
+        "2" = "";
+        "3" = "";
+        "4" = "";
+        "5" = "";
         urgent = "";
-        focused = "";
+        active = "";
         default = "";
       };
+      sort-by-number = true;
     };
     idle_inhibitor = {
       format = "{icon}";

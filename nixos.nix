@@ -17,6 +17,8 @@ in {
     allowUnfree = true;
   };
 
+  time.timeZone = "America/Denver";
+
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
