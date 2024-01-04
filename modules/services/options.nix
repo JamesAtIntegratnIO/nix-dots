@@ -4,7 +4,11 @@ with lib; {
     pipewire = mkOption {
       type = types.bool;
       description = "Pipewire audio server";
-      default = true;
+      default = false;
+    };
+    printer = mkEnableOption {
+      description = "Printer service";
+      default = false;
     };
   };
 }

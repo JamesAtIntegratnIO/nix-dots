@@ -30,5 +30,14 @@ in {
         pulseaudioFull
       ];
     })
+    (mkIf (cfg.printer) {
+      services.printing = {
+        enable = true;
+        drivers = with pkgs; [
+          mfcl3770cdwlpr
+          mfcl3770cdwcupswrapper
+        ];
+      };
+    })
   ];
 }

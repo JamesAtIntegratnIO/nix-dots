@@ -42,6 +42,10 @@ in {
       security = {
         yubikey.enable = true;
       };
+      services = {
+        pipewire = true;
+        printer = true;
+      };
       social = {
         discord = true;
         slack = true;
