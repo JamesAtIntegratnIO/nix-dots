@@ -26,6 +26,12 @@ in {
         };
         localVariables = {};
         dotDir = ".config/zsh";
+        dirHashes = {
+          docs = "$HOME/Documents";
+          downloads = "$HOME/Downloads";
+          projects = "$HOME/Projects";
+          dots = "$HOME/Projects/nix-dots";
+        };
         enableAutosuggestions = true;
         syntaxHighlighting.enable = true;
         history = {
