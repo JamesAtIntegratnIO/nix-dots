@@ -25,7 +25,7 @@ in {
           ];
         };
         localVariables = {};
-        dotDir = "~/.config/zsh";
+        dotDir = ".config/zsh";
         enableAutosuggestions = true;
         syntaxHighlighting.enable = true;
         history = {
