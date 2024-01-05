@@ -62,6 +62,9 @@ in {
           permitCertUid = "boboysddda@gmail.com";
         };
       };
+      virtualisation = {
+        containerVariant = "podman";
+      };
     };
     age = {
       identityPaths = [

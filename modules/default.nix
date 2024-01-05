@@ -12,6 +12,7 @@
     ./services
     ./social
     ./terminal
+    ./virtualisation
   ];
 
   environment.systemPackages = with pkgs; [
