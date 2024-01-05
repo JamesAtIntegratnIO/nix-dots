@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   self,
   inputs,
@@ -47,24 +48,18 @@ in {
     stateVersion = "24.05"; # Did you read the comment?
     autoUpgrade = {
       enable = true;
-      channel = "https://nixos.org/channels/nixos-unstable";
-    };
-  };
-  virtualisation.vmVariant = {
-    # following configuration is added only when building VM with build-vm
-    virtualisation = {
-      memorySize = 4192;
-      cores = 4;
-    };
-    virtualisation.qemu.options = [
-      "-vga none"
-      "-device virtio-vga-gl"
-      "-display gtk,gl=on,show-cursor=off"
-      "-audio pa,model=hda"
-    ];
-
-    environment.sessionVariables = {
-      WLR_NO_HARDWARE_CURSORS = "1";
+      flake = "${inputs.self.outPath} #${config.modules.network.hostName}";
+      flags = [
+        "--update-input"
+        "nixpkgs"
+        "-L"
+      ];
+      allowReboot = true;
+      operation = "switch";
+      rebootWindow = {
+        lower = "01:00";
+        upper = "04:00";
+      };
     };
   };
 }
