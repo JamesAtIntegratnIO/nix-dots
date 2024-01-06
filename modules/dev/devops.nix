@@ -24,7 +24,7 @@ in {
         kubectx
         kubernetes-helm
         kustomize
-        lens
+        openlens
         argocd
       ];
     })
