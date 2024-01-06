@@ -1,3 +1,8 @@
+# This will likely conflict very heavily with your hardware-configuration.nix. Specifically, around the filesystems, boot.loader, and bios.
+# Unless your proxmox is setup to work well with systemd you won't be able to boot with a systemd filesystem or bootloader.
+# The easiest way I've found to override this behavior is to let proxmox-image.nix own these parts of the configuration and use mkMerge with mkIf
+# in the hardware-configuration.nix to conditionally create the filesystems and boot loader based on if the services.qemuGuest.enable is true.
+# This is hacky as shit. Feel free to show me how to do it better.
 {
   lib,
   config,
@@ -20,7 +25,6 @@ with lib; {
       };
     }
   ];
-  # fileSystems."/".device = mkForce "/dev/disk/by-label/nixos";
 
   boot.loader.systemd-boot.enable = mkForce false;
 
