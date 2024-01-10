@@ -33,7 +33,6 @@ in {
           gopls
           go-outline
           golangci-lint
-          gocode
         ];
       };
     })

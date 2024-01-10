@@ -17,7 +17,7 @@ in {
           enable = true;
           defaultEditor = true;
           plugins = [
-            pkgs.vimPlugins.vim-go
+            # pkgs.vimPlugins.vim-go
             pkgs.vimPlugins.dracula-vim
             pkgs.vimPlugins.nerdtree
             pkgs.vimPlugins.nerdtree-git-plugin
