@@ -48,9 +48,11 @@ in {
           # For Alacritty : See https://github.com/alacritty/alacritty/issues/1501
           WINIT_X11_SCALE_FACTOR = "1.0";
         };
-        initExtraFirst = "gpgconf --launch gpg-agent";
+        initExtraFirst = ''
+        '';
         initExtra = ''
           autoload -Uz compinit
+          gpgconf --launch gpg-agent
           compinit
           zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
           zstyle ':completion:*' rehash true                              # automatically find new executables in path
