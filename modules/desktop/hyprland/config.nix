@@ -19,6 +19,7 @@ in {
               # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
               "$terminal" = "kitty";
               "$fileManager" = "dolphin";
+              "$browser" = "firefox";
               "$menu" = "rofi -show drun";
               "$mainMod" = "SUPER";
 
@@ -147,6 +148,7 @@ in {
               # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
               bind = [
                 "$mainMod, Q, exec, $terminal"
+                "$mainMod, W, exec, $browser"
                 "$mainMod, K, killactive"
                 "$mainMod, M, exit,"
                 "$mainMod, E, exec, $fileManager"
