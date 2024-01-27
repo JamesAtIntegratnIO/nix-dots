@@ -1,11 +1,40 @@
-{lib, ...}:
-with lib; {
-  options.modules.graphics = {
-    type = mkOption {
-      type = types.enum [null "intel"];
-      default = null;
-      description = "Enable GUI: allows to use graphical applications";
-      example = "intel";
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
+with lib; let
+  cfg = config.modules.graphics;
+  username = import ../../username.nix;
+in {
+  imports = [
+    ./options.nix
+  ];
+  config = mkIf (cfg.type == "nvidia") {
+    environment.systemPackages = with pkgs; [
+      linuxPackages.nvidia_x11
+      libGL
+      libGLU
+    ];
+    boot = {
+      blacklistedKernelModules = ["nouveau"];
+      kernelModules = [
+        "nvidia"
+      ];
+    };
+    hardware = {
+      opengl = {
+        enable = true;
+        driSupport = true;
+        driSupport32Bit = true;
+      };
+      nvidia = {
+        open = false;
+        modesetting.enable = true;
+        nvidiaSettings = true;
+      };
     };
   };
 }

@@ -33,7 +33,7 @@ in {
         vscode = true;
       };
       graphics = {
-        type = "intel";
+        type = "nvidia";
       };
       media = {
         spotify = "spotify-tui";
