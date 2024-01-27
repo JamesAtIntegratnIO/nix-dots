@@ -31,12 +31,19 @@ in {
       ];
     })
     (mkIf (cfg.printer) {
-      services.printing = {
-        enable = true;
-        drivers = with pkgs; [
-          mfcl3770cdwlpr
-          mfcl3770cdwcupswrapper
-        ];
+      services = {
+        printing = {
+          enable = true;
+          drivers = with pkgs; [
+            mfcl3770cdwlpr
+            mfcl3770cdwcupswrapper
+          ];
+        };
+        avahi = {
+          enable = true;
+          nssmdns4 = true;
+          openFirewall = true;
+        };
       };
     })
   ];

@@ -8,6 +8,7 @@
 with lib; let
   username = import ../../../username.nix;
   cfg = config.modules.virtualisation;
+  inherit (config.modules) graphics;
 in {
   imports = [./options.nix];
   config = mkMerge [
@@ -68,6 +69,9 @@ in {
         podman-compose
         pods
       ];
+    })
+    (mkIf ((cfg.containerVariant == "podman") && (graphics.type == "nvidia")) {
+      virtualisation.podman.enableNvidia = true;
     })
   ];
 }

@@ -23,6 +23,7 @@ in {
           appendNameservers = cfg.additionalNameServers;
           wifi = {
             backend = "wpa_supplicant";
+            powersave = false;
           };
         };
         # wireless.userControlled.enable = true;
@@ -44,8 +45,10 @@ in {
     (mkIf cfg.sshin.enable {
       services.openssh = {
         enable = true;
-        passwordAuthentication = false;
-        permitRootLogin = "no";
+        settings = {
+          PermitRootLogin = "no";
+          PasswordAuthentication = false;
+        };
         ports = [22];
       };
       users.users.${username}.openssh.authorizedKeys.keys = [

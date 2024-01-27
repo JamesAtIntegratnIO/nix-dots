@@ -15,6 +15,11 @@ in {
       browser = {
         firefox = true;
       };
+      containers = {
+        enable = true;
+        internalInterface = "wlp5s0";
+        ollama = true;
+      };
       desktop = {
         desktop = "hyprland";
         panel = "waybar";
@@ -31,6 +36,12 @@ in {
       editor = {
         enable = true;
         vscode = true;
+      };
+      gaming = {
+        enable = true;
+        steam = true;
+        lutris = true;
+        wine = true;
       };
       graphics = {
         type = "nvidia";

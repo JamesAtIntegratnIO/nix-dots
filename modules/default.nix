@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./browser
+    ./containers
     ./desktop
     ./display-manager
     ./dev
