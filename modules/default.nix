@@ -5,6 +5,7 @@
     ./display-manager
     ./dev
     ./editor
+    ./gaming
     ./graphics
     ./media
     ./network
