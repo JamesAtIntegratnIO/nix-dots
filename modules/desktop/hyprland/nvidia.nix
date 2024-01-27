@@ -4,7 +4,7 @@
     inherit (config.modules) graphics;
 in {
     config = mkMerge [
-        (mkIf (cfg.desktop == "hyprland") && (graphics.type == "nvidia"){
+        (mkIf ((cfg.desktop == "hyprland") && (graphics.type == "nvidia")){
             home-manager.users.${username} = {
                 wayland.windowManager.hyprland.settings = {
                     env = [
@@ -15,12 +15,16 @@ in {
                         "WLR_NO_HARDWARE_CURSORS,1"
                     ];
                 };
-                xdg.portal = {
+                
+            };
+            xdg.portal = {
+                    # extraPOrtals = with pkgs; [
+                    #     xdg-desktop-portal-wlr
+                    # ];
                     enable = true;
                     wlr.enable = true;
                 };
-            };
         })
-    ]
+    ];
     
 }

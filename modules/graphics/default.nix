@@ -30,6 +30,7 @@ in {
         "nvidia-drm.modeset=1"
       ];
     };
+    services.xserver.videoDrivers = ["nvidia"];
     hardware = {
       opengl = {
         enable = true;
@@ -37,6 +38,7 @@ in {
         driSupport32Bit = true;
       };
       nvidia = {
+        package = config.boot.kernelPackages.nvidiaPackages.production;
         open = false;
         modesetting.enable = true;
         nvidiaSettings = true;
