@@ -17,6 +17,8 @@ in {
       linuxPackages.nvidia_x11
       libGL
       libGLU
+      libsForQt5.qtwayland
+      libva
     ];
     boot = {
       blacklistedKernelModules = ["nouveau"];

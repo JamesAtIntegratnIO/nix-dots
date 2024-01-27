@@ -8,6 +8,7 @@
 with lib; let
   username = import ../../../username.nix;
   cfg = config.modules.desktop;
+  inherit (config.modules) graphics;
 in {
   config = mkMerge [
     (
@@ -225,6 +226,19 @@ in {
               exec = [
                 "nwg-panel"
               ];
+            })
+            (mkIf (graphics.type == "nvidia") {
+              env = [
+                "LIBVA_DRIVER_NAME,nvidia"
+                "XDG_SESSION_TYPE,wayland"
+                "GBM_BACKEND,nvidia-drm"
+                "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+                "WLR_NO_HARDWARE_CURSORS,1"
+              ];
+              xdg.portal = {
+                enable = true;
+                wlr.enable = true;
+              };
             })
           ];
         };
