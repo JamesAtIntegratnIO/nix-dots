@@ -14,7 +14,7 @@ in {
   ];
   config = mkIf (cfg.type == "nvidia") {
     environment.systemPackages = with pkgs; [
-      linuxPackages.nvidia_x11
+      # linuxPackages.nvidia_x11
       libGL
       libGLU
       libsForQt5.qtwayland
@@ -36,6 +36,11 @@ in {
         enable = true;
         driSupport = true;
         driSupport32Bit = true;
+        extraPackages = with pkgs; [
+          nvidia-vaapi-driver
+          vaapiVdpau
+          libvdpau-va-gl
+        ];
       };
       nvidia = {
         package = config.boot.kernelPackages.nvidiaPackages.production;
