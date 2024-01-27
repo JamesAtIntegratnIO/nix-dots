@@ -29,6 +29,7 @@ in {
     ./waybar.nix
     ./nwg-panel.nix
     ./hyprland-monitor-attached.nix
+    ./nvidia.nix
   ];
   config = mkMerge [
     (
