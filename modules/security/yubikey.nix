@@ -46,7 +46,7 @@ in {
 
         # Yubico's official tools
         yubikey-manager
-        yubikey-manager-qt
+        # yubikey-manager-qt
         yubikey-personalization
         yubikey-personalization-gui
         yubico-piv-tool

@@ -52,7 +52,7 @@ in {
       };
       network = {
         enable = true;
-        hostName = "lappy";
+        hostName = "gamer";
         additionalNameServers = ["192.168.16.53"];
         bluetooth.enable = true;
         ssh.enable = true;

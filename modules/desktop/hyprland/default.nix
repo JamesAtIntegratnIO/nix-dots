@@ -45,6 +45,7 @@ in {
           inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
           rofi-wifi-menu
         ];
+        xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk];
         # This line is the magic that makes gtklock work
         security.pam.services.gtklock.text = lib.readFile "${pkgs.gtklock}/etc/pam.d/gtklock";
 
