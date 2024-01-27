@@ -5,8 +5,8 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
-  sshPubKey = import ../../../sshPubKey.nix;
+  username = import ../../username.nix;
+  sshPubKey = import ../../sshPubKey.nix;
   inherit (config.modules) graphics;
   cfg = config.modules.network;
 in {
@@ -49,7 +49,7 @@ in {
         ports = [22];
       };
       users.users.${username}.openssh.authorizedKeys.keys = [
-        "${sshKey}"
+        "${sshPubKey}"
       ];
     })
 

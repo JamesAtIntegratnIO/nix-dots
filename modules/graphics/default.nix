@@ -23,6 +23,9 @@ in {
       kernelModules = [
         "nvidia"
       ];
+      kernelParams = [
+        "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      ];
     };
     hardware = {
       opengl = {
@@ -34,6 +37,7 @@ in {
         open = false;
         modesetting.enable = true;
         nvidiaSettings = true;
+        powerManagement.enable = true;
       };
     };
   };
