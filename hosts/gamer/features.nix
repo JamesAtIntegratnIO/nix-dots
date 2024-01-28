@@ -55,17 +55,6 @@ in {
         spotify = "spotify-tui";
         plex = true;
       };
-      security = {
-        yubikey.enable = true;
-      };
-      services = {
-        pipewire = true;
-        printer = true;
-      };
-      social = {
-        discord = true;
-        slack = true;
-      };
       network = {
         enable = true;
         hostName = "gamer";
@@ -76,7 +65,6 @@ in {
           gateway = "10.0.0.1";
         };
         additionalNameServers = ["192.168.16.53"];
-        bluetooth.enable = true;
         ssh.enable = true;
         sshin.enable = true;
         firewall.enable = true;
@@ -85,6 +73,20 @@ in {
           permitCertUid = "boboysdadda@gmail.com";
         };
       };
+      security = {
+        yubikey.enable = true;
+      };
+      services = {
+        pipewire = true;
+        printer = true;
+        cockpit = true;
+        bluetooth = true;
+      };
+      social = {
+        discord = true;
+        slack = true;
+      };
+
       virtualisation = {
         containerVariant = "docker";
       };
@@ -118,27 +120,10 @@ in {
     hardware = {
       # For zsa keyboards
       keyboard.zsa.enable = true;
-      # Will not work if pipewire is enabled (prefer pipewire)
-      pulseaudio.enable = false;
-      # Enable bluetooth hardware
-      bluetooth.enable = true;
       # Enable cause sound don't work
       enableAllFirmware = true;
-      # for the xbox controller
-      xpadneo.enable = true;
       enableRedistributableFirmware = true;
       cpu.intel.updateMicrocode = true;
-      opengl = {
-        enable = true;
-        driSupport32Bit = true;
-        driSupport = true;
-        extraPackages = with pkgs; [
-          intel-media-driver
-          vaapiIntel
-          vaapiVdpau
-          libvdpau-va-gl
-        ];
-      };
     };
   };
 }

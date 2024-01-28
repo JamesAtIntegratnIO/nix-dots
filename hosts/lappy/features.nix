@@ -95,21 +95,8 @@ in {
       bluetooth.enable = true;
       # Enable cause sound don't work
       enableAllFirmware = true;
-      # for the xbox controller
-      xpadneo.enable = true;
       enableRedistributableFirmware = true;
       cpu.intel.updateMicrocode = true;
-      opengl = {
-        enable = true;
-        driSupport32Bit = true;
-        driSupport = true;
-        extraPackages = with pkgs; [
-          intel-media-driver
-          vaapiIntel
-          vaapiVdpau
-          libvdpau-va-gl
-        ];
-      };
     };
   };
 }

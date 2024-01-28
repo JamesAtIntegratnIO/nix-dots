@@ -24,6 +24,7 @@ in {
           rate = 48000;
         };
       };
+      hardware.xpadneo.enable = true;
     })
     (mkIf cfg.steam {
       environment.systemPackages = with pkgs; [

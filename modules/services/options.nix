@@ -10,5 +10,16 @@ with lib; {
       description = "Printer service";
       default = false;
     };
+    cockpit = mkEnableOption {
+      description = ''
+        Cockpit web interface
+        https://cockpit-project.org/
+      '';
+      default = false;
+    };
+    bluetooth = mkEnableOption {
+      description = "Bluetooth service";
+      default = false;
+    };
   };
 }

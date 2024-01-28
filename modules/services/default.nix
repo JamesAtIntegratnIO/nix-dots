@@ -29,6 +29,23 @@ in {
       environment.systemPackages = with pkgs; [
         pulseaudioFull
       ];
+      # Disable pulseaudio to avoid conflicts
+      hardware.pulseaudio.enable = false;
+    })
+    (mkIf cfg.bluetooth {
+      hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+        settings = {
+          General = {
+            Experimental = true;
+            FastConnectable = true;
+          };
+          Policy = {
+            AutoEnable = true;
+          };
+        };
+      };
     })
     (mkIf (cfg.printer) {
       services = {
@@ -44,6 +61,14 @@ in {
           nssmdns4 = true;
           openFirewall = true;
         };
+      };
+    })
+    (mkIf (cfg.cockpit) {
+      services.cockpit = {
+        enable = true;
+        package = pkgs.cockpit;
+        port = 9090;
+        openFirewall = true;
       };
     })
   ];

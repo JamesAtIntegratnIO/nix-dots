@@ -26,8 +26,6 @@ in {
             powersave = false;
           };
         };
-
-        # wireless.userControlled.enable = true;
       };
     })
     (mkIf (cfg.staticIP.address != null) {
@@ -46,12 +44,6 @@ in {
           address = cfg.staticIP.gateway;
           interface = cfg.staticIP.interface;
         };
-      };
-    })
-    (mkIf cfg.bluetooth.enable {
-      hardware.bluetooth = {
-        enable = true;
-        powerOnBoot = false;
       };
     })
     # ssh out

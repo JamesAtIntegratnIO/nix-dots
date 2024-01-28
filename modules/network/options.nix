@@ -55,9 +55,6 @@ in {
       '';
       example = ["192.168.16.53"];
     };
-    bluetooth = {
-      enable = mkEnableOption "bluetooth";
-    };
     ssh = {
       enable = mkEnableOption "ssh";
     };
