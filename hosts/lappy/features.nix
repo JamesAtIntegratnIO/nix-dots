@@ -39,28 +39,28 @@ in {
         spotify = "spotify-tui";
         plex = true;
       };
-      security = {
-        yubikey.enable = true;
-      };
-      services = {
-        pipewire = true;
-        printer = true;
-      };
-      social = {
-        discord = true;
-        slack = true;
-      };
       network = {
         enable = true;
         hostName = "lappy";
         additionalNameServers = ["192.168.16.53"];
-        bluetooth.enable = true;
         ssh.enable = true;
         firewall.enable = true;
         tailscale = {
           enable = true;
           permitCertUid = "boboysddda@gmail.com";
         };
+      };
+      security = {
+        yubikey.enable = true;
+      };
+      services = {
+        pipewire = true;
+        printer = true;
+        bluetooth = true;
+      };
+      social = {
+        discord = true;
+        slack = true;
       };
       virtualisation = {
         containerVariant = "podman";
@@ -89,10 +89,6 @@ in {
     hardware = {
       # For zsa keyboards
       keyboard.zsa.enable = true;
-      # Will not work if pipewire is enabled (prefer pipewire)
-      pulseaudio.enable = false;
-      # Enable bluetooth hardware
-      bluetooth.enable = true;
       # Enable cause sound don't work
       enableAllFirmware = true;
       enableRedistributableFirmware = true;
