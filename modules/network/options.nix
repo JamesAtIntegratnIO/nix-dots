@@ -12,6 +12,41 @@ in {
       '';
       example = "nixos";
     };
+    staticIP = {
+      address = mkOption {
+        type = types.str;
+        default = "";
+        description = ''
+          The static IP address of the machine on the network.
+        '';
+      };
+      example = "10.0.1.1";
+      interface = mkOption {
+        type = types.str;
+        default = "eth0";
+        description = ''
+          The interface to assign the static IP address to.
+        '';
+        example = "eth0";
+      };
+      prefixLength = mkOption {
+        type = types.int;
+        default = 24;
+        description = ''
+          The prefix length of the static IP address.
+        '';
+        example = 24;
+      };
+      gateway = mkOption {
+        type = types.str;
+        default = "";
+        description = ''
+          The gateway of the static IP address.
+        '';
+        example = "10.0.0.1";
+      };
+    };
+
     additionalNameServers = mkOption {
       type = types.listOf types.str;
       default = [];

@@ -2,7 +2,7 @@
 with lib; {
   options.modules.containers = {
     enable = mkEnableOption "enable";
-    internalInterface = mkOption {
+    externalInterface = mkOption {
       type = types.str;
       default = "wlp5s0";
     };

@@ -12,43 +12,69 @@ in {
   imports = [./options.nix];
 
   config = mkMerge [
-    (mkIf (cfg.enable) {
-      networking.nat = {
-        enable = true;
-        internalInterfaces = [cfg.internalInterface];
-        externalInterface = "br0";
-      };
-    })
     (mkIf (cfg.ollama.enable) {
       users.users.ollama = {
         uid = 600;
         isSystemUser = true;
         group = "ollama";
       };
+
       users.groups.ollama = {
         gid = 600;
       };
 
-      containers.ollama = {
-        autoStart = true;
-        privateNetwork = true;
-        config = {
-          config,
-          pkgs,
-          ...
-        }: {
-          services.ollama = {
-            enable = true;
-            listenAddress = "0.0.0.0:11434";
-          };
-          networking = {
-            firewall = {
-              enable = true;
-              allowedTCPPorts = [11434];
-            };
-          };
+      virtualisation.oci-containers.containers.ollama = {
+        image = "ollama/ollama:latest";
+
+        extraOptions = [
+          "--gpus=all"
+          "--runtime=nvidia"
+          "--network=host"
+        ];
+
+        ports = ["11434"];
+
+        environment = {
+          NVIDIA_VISIBLE_DEVICES = "all";
+          NVIDIA_DRIVER_CAPABILITIES = "all";
+          OLLAMA_ORIGINS = "*";
+          PUID = "600";
+          PGID = "600";
         };
+
+        volumes = [
+          "/mnt/storage/ollama/ollama:/root/.ollama"
+        ];
       };
+
+      networking.firewall.allowedTCPPorts = [
+        11434
+      ];
+    })
+    (mkIf (cfg.ollamaWebUI.enable) {
+      virtualisation.oci-containers.containers.ollamaWebUI = {
+        image = "ghcr.io/ollama-webui/ollama-webui:main";
+
+        extraOptions = [
+          "--network=host"
+        ];
+
+        ports = ["8080"];
+
+        environment = {
+          OLLAMA_ORIGINS = "0.0.0.0";
+          OLLAMA_API_BASE_URL = "http://localhost:11434/api";
+          PUID = "600";
+          PGID = "600";
+        };
+        volumes = [
+          "/mnt/storage/ollama/ollama-webui:/app/backend/data"
+        ];
+      };
+
+      networking.firewall.allowedTCPPorts = [
+        8080
+      ];
     })
   ];
 }

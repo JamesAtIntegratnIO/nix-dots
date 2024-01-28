@@ -6,7 +6,7 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
+  username = import ../../username.nix;
   cfg = config.modules.virtualisation;
   inherit (config.modules) graphics;
 in {
@@ -30,7 +30,7 @@ in {
         };
       };
     })
-    (mkIf (cfg.containerVariant == "podman") {
+    (mkIf (cfg.containerVariant != null) {
       virtualisation = {
         containers.enable = true;
         containers.storage.settings = {
@@ -42,7 +42,11 @@ in {
             options.overlay.mountopt = "nodev,metacopy=on";
           };
         };
+      };
+    })
 
+    (mkIf (cfg.containerVariant == "podman") {
+      virtualisation = {
         oci-containers.backend = "podman";
         podman = {
           enable = true;
@@ -72,6 +76,16 @@ in {
     })
     (mkIf ((cfg.containerVariant == "podman") && (graphics.type == "nvidia")) {
       virtualisation.podman.enableNvidia = true;
+    })
+    (mkIf (cfg.containerVariant == "docker") {
+      virtualisation = {
+        oci-containers.backend = "docker";
+        docker = {
+          enable = true;
+          enableNvidia = true;
+        };
+      };
+      users.users.${username}.extraGroups = ["docker"];
     })
   ];
 }

@@ -9,7 +9,7 @@ with lib; {
       '';
     };
     containerVariant = mkOption {
-      type = types.enum ["podman" null];
+      type = types.enum ["podman" "docker" null];
       default = null;
       description = ''
         The container variant to use.

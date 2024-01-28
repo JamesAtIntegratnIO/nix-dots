@@ -26,7 +26,26 @@ in {
             powersave = false;
           };
         };
+
         # wireless.userControlled.enable = true;
+      };
+    })
+    (mkIf (cfg.staticIP.address != null) {
+      networking = {
+        interfaces = {
+          "${cfg.staticIP.interface}" = {
+            ipv4.addresses = [
+              {
+                address = cfg.staticIP.address;
+                prefixLength = cfg.staticIP.prefixLength;
+              }
+            ];
+          };
+        };
+        defaultGateway = {
+          address = cfg.staticIP.gateway;
+          interface = cfg.staticIP.interface;
+        };
       };
     })
     (mkIf cfg.bluetooth.enable {

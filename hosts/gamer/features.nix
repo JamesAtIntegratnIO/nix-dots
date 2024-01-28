@@ -17,8 +17,13 @@ in {
       };
       containers = {
         enable = true;
-        internalInterface = "wlp5s0";
-        ollama = true;
+        externalInterface = "wlp5s0";
+        ollama = {
+          enable = true;
+        };
+        ollamaWebUI = {
+          enable = true;
+        };
       };
       desktop = {
         desktop = "hyprland";
@@ -64,6 +69,12 @@ in {
       network = {
         enable = true;
         hostName = "gamer";
+        staticIP = {
+          interface = "wlp5s0";
+          address = "10.0.1.1";
+          prefixLength = 9;
+          gateway = "10.0.0.1";
+        };
         additionalNameServers = ["192.168.16.53"];
         bluetooth.enable = true;
         ssh.enable = true;
@@ -71,11 +82,11 @@ in {
         firewall.enable = true;
         tailscale = {
           enable = true;
-          permitCertUid = "boboysddda@gmail.com";
+          permitCertUid = "boboysdadda@gmail.com";
         };
       };
       virtualisation = {
-        containerVariant = "podman";
+        containerVariant = "docker";
       };
     };
     age = {
@@ -99,7 +110,7 @@ in {
           "x-systemd.idle-timeout=600" # disconnect if not used for 10 minutes. automount will reconnect on next access
         ];
       };
-      "/home/${username}/games" = {
+      "/mnt/storage" = {
         device = "/dev/disk/by-label/GAMES";
         fsType = "ext4";
       };
