@@ -19,6 +19,7 @@ in {
       libGLU
       libsForQt5.qtwayland
       libva
+      nvtop-nvidia
     ];
     boot = {
       blacklistedKernelModules = ["nouveau"];
