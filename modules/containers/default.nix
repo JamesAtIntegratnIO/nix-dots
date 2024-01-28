@@ -38,8 +38,8 @@ in {
           NVIDIA_VISIBLE_DEVICES = "all";
           NVIDIA_DRIVER_CAPABILITIES = "all";
           OLLAMA_ORIGINS = "*";
-          PUID = "600";
-          PGID = "600";
+          # PUID = "600";
+          # PGID = "600";
         };
 
         volumes = [

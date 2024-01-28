@@ -16,6 +16,7 @@ in {
   };
   nixpkgs.config = {
     allowUnfree = true;
+    nvidia.acceptLicencse = true;
   };
 
   time.timeZone = "America/Denver";
@@ -41,6 +42,7 @@ in {
   home-manager.users.${username} = {
     nixpkgs.config = {
       allowUnfree = true;
+      nvidia.acceptLicencse = true;
     };
 
     home.stateVersion = "22.11";
