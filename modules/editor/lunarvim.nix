@@ -8,17 +8,13 @@
 with lib; let
   cfg = config.modules.editor;
   username = import ../../username.nix;
+  inherit (config.modules) graphics;
 in {
-  imports = [
-    ./lunarvim.nix
-    ./vscode.nix
-    ./vim.nix
-    ./options.nix
-  ];
-
-  config = mkIf (cfg.enable) {
+  config = mkIf (cfg.lunarvim) {
+    # install lunarvim
     environment.systemPackages = with pkgs; [
-      alejandra
+      pkgs.lunarvim
     ];
+    # create a file at ~/.config/lvim/config.lua
   };
 }

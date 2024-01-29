@@ -32,6 +32,7 @@ in {
               ];
               # Monitor config
               monitor = [
+                "DP-3,highrr,auto,auto"
                 "eDP-1,1920x1200,3840x0,1"
                 # Monitor got renamed for some rando reason
                 # so there are 2 matching entries here
