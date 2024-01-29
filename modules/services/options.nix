@@ -21,5 +21,9 @@ with lib; {
       description = "Bluetooth service";
       default = false;
     };
+    wayvnc = mkEnableOption {
+      description = "WayVNC package";
+      default = false;
+    };
   };
 }

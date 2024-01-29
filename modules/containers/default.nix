@@ -8,11 +8,12 @@
 with lib; let
   username = import ../../username.nix;
   cfg = config.modules.containers;
+  inherit (config.modules) virtualisation;
 in {
   imports = [./options.nix];
 
   config = mkMerge [
-    (mkIf (cfg.ollama.enable) {
+    (mkIf ((cfg.ollama.enable) && (virtualisation.containerVariant == "docker")) {
       users.users.ollama = {
         uid = 600;
         isSystemUser = true;
@@ -28,7 +29,6 @@ in {
 
         extraOptions = [
           "--gpus=all"
-          "--runtime=nvidia"
           "--network=host"
         ];
 
@@ -51,7 +51,7 @@ in {
         11434
       ];
     })
-    (mkIf (cfg.ollamaWebUI.enable) {
+    (mkIf ((cfg.ollamaWebUI.enable) && (virtualisation.containerVariant == "docker")) {
       virtualisation.oci-containers.containers.ollamaWebUI = {
         image = "ghcr.io/ollama-webui/ollama-webui:main";
 

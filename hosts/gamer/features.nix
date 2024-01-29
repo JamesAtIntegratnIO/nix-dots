@@ -81,6 +81,7 @@ in {
         printer = true;
         cockpit = true;
         bluetooth = true;
+        wayvnc = true;
       };
       social = {
         discord = true;

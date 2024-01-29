@@ -71,5 +71,21 @@ in {
         openFirewall = true;
       };
     })
+    (mkIf (cfg.wayvnc) {
+      environment.systemPackages = with pkgs; [
+        wayvnc
+      ];
+      systemd.user.services.wayvnc = {
+        description = "WayVNC";
+        wantedBy = ["multi-user.target"];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.wayvnc}/bin/wayvnc 0.0.0.0 5900";
+          Restart = "always";
+          RestartSec = 5;
+        };
+      };
+      networking.firewall.allowedTCPPorts = [5900];
+    })
   ];
 }
