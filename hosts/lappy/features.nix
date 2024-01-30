@@ -9,7 +9,11 @@ in {
   imports = [
     ../../modules
     inputs.agenix.nixosModules.default
+<<<<<<< HEAD
     inputs.nixvim.nixosModules.nixvim
+=======
+    inputs.nixvim.homeManagerModules.nixvim
+>>>>>>> 782de31 (add nixvim)
   ];
   config = {
     modules = {

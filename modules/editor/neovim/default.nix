@@ -8,7 +8,9 @@
 with lib; let
   cfg = config.modules.editor;
   username = import ../../../username.nix;
+  vimKeymaps = import ./keymaps.nix;
 in {
+
   config = mkMerge [
     (mkIf cfg.neovim {
       programs.nixvim = {
@@ -19,29 +21,7 @@ in {
           shiftwidth = 2;
         };
 	globals.mapleader = ",";
-	keymaps = [
-	  {
-	    key = "<leader>ft";
-	    action = "<cmd>NvimTreeToggle<CR>";
-	  }
-	  {
-	    key = "<leader>ff";
-	    action = "<cmd>Telescope find_files<CR>";
-	  }
-	  {
-	    key = "<leader>fb";
-	    action = "<cmd>Telescope buffers<CR>";
-	  }
-	  {
-	    key = "<leader>fg";
-	    action = "<cmd>Telescope live_grep<CR>";
-	  }
-	  {
-	    key = "<leader>fp";
-	    action = "<cmd>Telescope git_files<CR>";
-	  }
-       	    
-	];
+	keymaps = vimKeymaps;
         plugins = {
           lsp = {
             enable = true;
@@ -78,6 +58,10 @@ in {
 	      };
 	      marksman = {
 		enable = true;
+	      };
+	      nixd = {
+	        enable = true;
+
 	      };
 	    };
           };

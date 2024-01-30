@@ -76,6 +76,11 @@ in {
             "hypr/rokid-detached.sh".source = ./rokid-detached.sh;
           };
         };
+	qt = {
+	  enable = true;
+	  platformTheme = "qt5ct";
+	  style = "kvantum";
+	};
       }
     )
   ];
