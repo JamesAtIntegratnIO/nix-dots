@@ -12,5 +12,8 @@ with lib; {
     ollamaWebUI = {
       enable = mkEnableOption "enable";
     };
+    sillytavern = {
+      enable = mkEnableOption "enable";
+    };
   };
 }

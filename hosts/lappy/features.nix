@@ -9,6 +9,7 @@ in {
   imports = [
     ../../modules
     inputs.agenix.nixosModules.default
+    inputs.nixvim.homeManagerModules.nixvim
   ];
   config = {
     modules = {

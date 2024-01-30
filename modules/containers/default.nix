@@ -76,5 +76,24 @@ in {
         8080
       ];
     })
+    (mkIf ((cfg.sillytavern.enable) && (virtualisation.containerVariant == "docker")) {
+      virtualisation.oci-containers.containers.sillytavern = {
+        image = "goolashe/sillytavern:latest";
+
+        extraOptions = [
+          "--network=host"
+        ];
+
+        ports = ["8000"];
+
+        volumes = [
+          "/mnt/storage/sillytavern/config:/home/node/app/config"
+          "/mnt/storage/sillytavern/user:/home/node/app/public/user"
+        ];
+      };
+      networking.firewall.allowedTCPPorts = [
+        8000
+      ];
+    })
   ];
 }

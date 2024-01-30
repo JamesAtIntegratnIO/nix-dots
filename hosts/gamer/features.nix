@@ -9,6 +9,7 @@ in {
   imports = [
     ../../modules
     inputs.agenix.nixosModules.default
+    inputs.nixvim.nixosModules.nixvim
   ];
   config = {
     modules = {
@@ -22,6 +23,9 @@ in {
           enable = true;
         };
         ollamaWebUI = {
+          enable = true;
+        };
+        sillytavern = {
           enable = true;
         };
       };
@@ -42,6 +46,7 @@ in {
         enable = true;
         vscode = true;
         lunarvim = true;
+        neovim = true;
       };
       gaming = {
         enable = true;

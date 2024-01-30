@@ -45,6 +45,7 @@ in {
         environment.systemPackages = with pkgs; [
           inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
           rofi-wifi-menu
+          wl-clipboard
         ];
         xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk];
         # This line is the magic that makes gtklock work

@@ -17,6 +17,8 @@ in {
       users.users.${username} = {
         packages = with pkgs; [
           discord-ptb
+          discord-screenaudio
+          xwaylandvideobridge
         ];
       };
     })

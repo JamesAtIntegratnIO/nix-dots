@@ -11,6 +11,7 @@ with lib; let
 in {
   imports = [
     ./lunarvim
+    ./neovim
     ./vscode.nix
     ./vim.nix
     ./options.nix
