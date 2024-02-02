@@ -17,12 +17,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
+      - name: Check nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@v4
       - name: Install Nix
-        uses: cachix/install-nix-action@v18
-        with:
-          install_url: https://nixos.org/nix/install
-          extra_nix_config: |
-            auto-optimise-store = true
-            experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-      - run: nix flake check
+        uses: DeterminateSystems/nix-installer-action@v3
