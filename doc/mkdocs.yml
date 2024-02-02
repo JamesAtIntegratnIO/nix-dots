@@ -1,0 +1,13 @@
+site_name: James' NixOS configuration options
+site_description: Docs to the options in my mess
+site_url: https://jamesatintegratnio.github.io/nix-dots/
+repo_url: https://github.com/jamesatintegratnio/nix-dots
+site_author: James D.
+
+nav:
+  - Home: index.md
+
+theme:
+  name: material
+
+  include_sidebar: yes
