@@ -5,6 +5,7 @@ with lib; {
     externalInterface = mkOption {
       type = types.str;
       default = "wlp5s0";
+      description = "The network interface to use for external traffic";
     };
     ollama = {
       enable = mkEnableOption "enable";

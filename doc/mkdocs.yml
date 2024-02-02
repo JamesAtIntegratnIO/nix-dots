@@ -2,12 +2,38 @@ site_name: James' NixOS configuration options
 site_description: Docs to the options in my mess
 site_url: https://jamesatintegratnio.github.io/nix-dots/
 repo_url: https://github.com/jamesatintegratnio/nix-dots
+repo_name: jamesatintegratnio/nix-dots
 site_author: James D.
 
 nav:
   - Home: index.md
 
 theme:
+  font:
+    text: Fira Code
+  icon:
+    repo: fontawesome/brands/github
   name: material
+  palette:
 
-  include_sidebar: yes
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+
+
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference

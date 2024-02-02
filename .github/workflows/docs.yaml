@@ -1,4 +1,7 @@
 name: "Docs"
+permissions:
+  id-token: write
+  pages: write
 on:
   push:
     branches:
@@ -16,23 +19,21 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v4
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v3
+      - name: Run update script
+        run: ./update.sh
+        working-directory: ./doc
       - name: Build Docs
         run: |
-          nix build '.#doc'
-
+          nix build '.#docs'
       - name: Fix permissions
         run: |
           chmod -c -R +rX "result/" | while read line; do
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: result
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-        
-

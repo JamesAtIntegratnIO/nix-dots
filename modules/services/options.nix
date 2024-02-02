@@ -6,24 +6,9 @@ with lib; {
       description = "Pipewire audio server";
       default = false;
     };
-    printer = mkEnableOption {
-      description = "Printer service";
-      default = false;
-    };
-    cockpit = mkEnableOption {
-      description = ''
-        Cockpit web interface
-        https://cockpit-project.org/
-      '';
-      default = false;
-    };
-    bluetooth = mkEnableOption {
-      description = "Bluetooth service";
-      default = false;
-    };
-    wayvnc = mkEnableOption {
-      description = "WayVNC package";
-      default = false;
-    };
+    printer = mkEnableOption "Printer service";
+    cockpit = mkEnableOption "Cockpit service";
+    bluetooth = mkEnableOption "Bluetooth service";
+    wayvnc = mkEnableOption "WayVNC service";
   };
 }

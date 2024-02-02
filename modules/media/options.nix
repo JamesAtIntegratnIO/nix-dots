@@ -4,15 +4,8 @@ with lib; {
     spotify = mkOption {
       type = types.enum ["spotifyd" "spotify-tui" "spotify" null];
       default = null;
-      description = ''
-        Spotify client to use.
-      '';
+      description = "Spotify client to use.";
     };
-    plex = mkEnableOption {
-      default = false;
-      description = ''
-        Enable Plex media player.
-      '';
-    };
+    plex = mkEnableOption "plex";
   };
 }

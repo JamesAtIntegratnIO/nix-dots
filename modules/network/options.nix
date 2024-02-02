@@ -1,6 +1,6 @@
 {lib, ...}:
 with lib; let
-  username = import../../username.nix;
+  username = import ../../username.nix;
 in {
   options.modules.network = {
     enable = mkEnableOption "enable";
