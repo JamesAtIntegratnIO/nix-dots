@@ -29,7 +29,7 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-label/NIXROOT";
+    device = lib.mkDefault "/dev/disk/by-label/NIXROOT";
     fsType = "ext4";
   };
 
