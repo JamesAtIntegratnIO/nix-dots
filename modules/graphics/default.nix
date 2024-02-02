@@ -25,6 +25,9 @@ in {
           libvdpau-va-gl
         ];
       };
+      environment.systemPackages = with pkgs; [
+        sof-firmware
+      ];
     })
     (mkIf (cfg.type == "nvidia") {
       environment.systemPackages = with pkgs; [

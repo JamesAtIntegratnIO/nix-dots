@@ -38,7 +38,7 @@ in {
         powerOnBoot = true;
         settings = {
           General = {
-            Experimental = true;
+            Experimental = false;
             FastConnectable = true;
           };
           Policy = {

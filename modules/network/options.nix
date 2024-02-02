@@ -46,6 +46,7 @@ in {
         example = "10.0.0.1";
       };
     };
+    disableIPv6 = mkEnableOption "disableIPv6";
 
     additionalNameServers = mkOption {
       type = types.listOf types.str;

@@ -12,6 +12,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot.enable = true;
       efi = {
@@ -21,7 +22,10 @@
     initrd = {
       enable = true;
       availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
-      kernelModules = ["dm-snapshot"];
+      kernelModules = [
+        "dm-snapshot"
+        "i915"
+      ];
       luks.devices = {
         luksroot = {
           device = "/dev/disk/by-uuid/0fe72388-7f89-44f2-89c8-e50291c6a183";
@@ -34,8 +38,10 @@
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux"];
     extraModprobeConfig = ''
-      options bluetooth disable_ertm=1
     '';
+  };
+  environment.variables = {
+    VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
   };
 
   fileSystems."/" = {
@@ -60,5 +66,18 @@
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware = {
+    enableRedistributableFirmware = true;
+    cpu.intel.updateMicrocode = true;
+    opengl.extraPackages = with pkgs; [
+      (
+        if (lib.versionOlder (lib.versions.majorMinor lib.version) "23.11")
+        then vaapiIntel
+        else intel-vaapi-driver
+      )
+      libvdpau-va-gl
+      intel-media-driver
+    ];
+  };
+  services.fstrim.enable = lib.mkDefault true;
 }

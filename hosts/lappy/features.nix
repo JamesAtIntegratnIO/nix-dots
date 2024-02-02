@@ -9,7 +9,7 @@ in {
   imports = [
     ../../modules
     inputs.agenix.nixosModules.default
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.nixosModules.nixvim
   ];
   config = {
     modules = {
@@ -50,6 +50,7 @@ in {
           enable = true;
           permitCertUid = "boboysddda@gmail.com";
         };
+        disableIPv6 = true;
       };
       security = {
         yubikey.enable = true;
@@ -92,8 +93,6 @@ in {
       keyboard.zsa.enable = true;
       # Enable cause sound don't work
       enableAllFirmware = true;
-      enableRedistributableFirmware = true;
-      cpu.intel.updateMicrocode = true;
     };
   };
 }

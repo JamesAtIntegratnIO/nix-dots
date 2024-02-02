@@ -74,5 +74,10 @@ in {
         allowedUDPPorts = cfg.firewall.allowedUDPPorts;
       };
     })
+    (mkIf cfg.disableIPv6 {
+      networking = {
+        enableIPv6 = false;
+      };
+    })
   ];
 }
