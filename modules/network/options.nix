@@ -19,8 +19,8 @@ in {
         description = ''
           The static IP address of the machine on the network.
         '';
+        example = "10.0.1.1";
       };
-      example = "10.0.1.1";
       interface = mkOption {
         type = types.str;
         default = "eth0";

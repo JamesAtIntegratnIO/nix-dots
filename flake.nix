@@ -40,8 +40,8 @@
       {
         inherit inputs self;
       };
-      packages."x86_64-linux".doc = import ./doc {
+    packages."x86_64-linux".docs = import ./doc {
       inherit inputs self;
-      };
+    };
   };
 }

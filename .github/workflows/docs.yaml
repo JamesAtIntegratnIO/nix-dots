@@ -1,13 +1,8 @@
-name: "Build"
+name: "Docs"
 on:
-  pull_request:
-    paths:
-      - "**/*.nix"
   push:
     branches:
       - main
-    paths:
-      - "**/*.nix"
 jobs:
   tests:
     name: Check that flake builds
@@ -21,3 +16,23 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v4
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v3
+      - name: Build Docs
+        run: |
+          nix build '.#doc'
+
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX "result/" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: result
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        
+
