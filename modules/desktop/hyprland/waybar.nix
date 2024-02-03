@@ -95,7 +95,7 @@ with lib; let
       tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
       tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
-      on-click = "/usr/bin/env rofi-bluetooth";
+      on-click = "sleep 0.1 && /usr/bin/env rofi-bluetooth";
     };
     network = {
       format-wifi = "{essid} ({signalStrength}%) ";
@@ -103,7 +103,7 @@ with lib; let
       format-linked = "{ifname} (No IP) ";
       format-disconnected = "Disconnected ⚠";
       format-alt = "{ifname}: {ipaddr}/{cidr}";
-      on-click = "/usr/bin/env rofi-wifi-menu";
+      on-click = "sleep 0.1 && /usr/bin/env rofi-wifi-menu";
     };
     pulseaudio = {
       format = "{volume}% {icon} {format_source}";
@@ -121,8 +121,8 @@ with lib; let
         car = "";
         default = ["" "" ""];
       };
-      on-click = "~/.config/waybar/scripts/audio-switch.sh speaker";
-      on-click-right = "~/.config/waybar/scripts/audio-switch.sh mic";
+      on-click = "sleep 0.1 && ~/.config/waybar/scripts/audio-switch.sh speaker";
+      on-click-right = "sleep 0.1 && ~/.config/waybar/scripts/audio-switch.sh mic";
       on-scroll-up = "${pactl} set-sink-volume @DEFAULT_SINK@ +1%";
       on-scroll-down = "${pactl} set-sink-volume @DEFAULT_SINK@ -1%";
     };
