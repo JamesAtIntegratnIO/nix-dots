@@ -16,6 +16,7 @@ in {
         home-manager.users.${username} = {
           wayland.windowManager.hyprland.settings = mkMerge [
             {
+              source = "~/.config/hypr/colors.conf";
               # Set programs that you use
               # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
               "$terminal" = "kitty";
@@ -76,8 +77,8 @@ in {
                 gaps_in = 5;
                 gaps_out = 20;
                 border_size = 2;
-                "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-                "col.inactive_border" = "rgba(595959aa)";
+                "col.active_border" = "$teal 45deg";
+                "col.inactive_border" = "$surface1";
 
                 layout = "dwindle";
 
@@ -100,7 +101,8 @@ in {
                 drop_shadow = true;
                 shadow_range = 4;
                 shadow_render_power = 3;
-                "col.shadow" = "rgba(1a1a1aee)";
+                "col.shadow" = "$teal";
+                "col.shadow_inactive" = "$surface1";
               };
 
               animations = {
@@ -192,7 +194,7 @@ in {
                 "$mainMod, mouse_down, workspace, e+1"
                 "$mainMod, mouse_up, workspace, e-1"
                 # Screenshot Area
-		"$mainMod, S, exec, bash /home/${username}/.config/rofi/bin/screenshot.sh"
+                "$mainMod, S, exec, bash /home/${username}/.config/rofi/bin/screenshot.sh"
                 "$mainMod SHIFT, S, exec, grimblast copy area"
                 # Lockscreen
                 "$mainMod SHIFT, L, exec, $lockCommand"

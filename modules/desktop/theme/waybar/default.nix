@@ -16,6 +16,7 @@ with lib; let
     #waybar {
       background: transparent;
       background-color: @base;
+      opacity: 0.9;
       color: @text;
       margin: 5px 5px;
     }

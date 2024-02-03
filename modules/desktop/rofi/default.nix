@@ -40,43 +40,43 @@ in {
       };
       confirm-rasi = {
         source = ./config/confirm.rasi;
-	target = "rofi/config/confirm.rasi";
+        target = "rofi/config/confirm.rasi";
       };
       askpass-rasi = {
         source = ./config/askpass.rasi;
-	target = "rofi/config/askpass.rasi";
+        target = "rofi/config/askpass.rasi";
       };
       runner-bin = {
         source = ./bin/runner.sh;
-	target = "rofi/bin/runner.sh";
-	};
+        target = "rofi/bin/runner.sh";
+      };
       runner-rasi = {
-	source = ./config/runner.rasi;
-	target = "rofi/config/runnner.rasi";
+        source = ./config/runner.rasi;
+        target = "rofi/config/runnner.rasi";
       };
       bluetooth-rasi = {
-      	source = ./config/bluetooth.rasi;
-	target = "rofi/config/bluetooth.rasi";
+        source = ./config/bluetooth.rasi;
+        target = "rofi/config/bluetooth.rasi";
       };
       network-rasi = {
-      	source = ./config/network.rasi;
-	target = "rofi/config/network.rasi";
+        source = ./config/network.rasi;
+        target = "rofi/config/network.rasi";
       };
       networkmenu-rasi = {
-      	source = ./config/networkmenu.rasi;
-	target = "rofi/config/networkmenu.rasi";
+        source = ./config/networkmenu.rasi;
+        target = "rofi/config/networkmenu.rasi";
       };
       mpd-rasi = {
-      	source = ./config/mpd.rasi;
-	target = "rofi/config/mpd.rasi";
+        source = ./config/mpd.rasi;
+        target = "rofi/config/mpd.rasi";
       };
       screenshot-bin = {
-      	source = ./bin/screenshot.sh;
-	target = "rofi/bin/screenshot.sh";
+        source = ./bin/screenshot.sh;
+        target = "rofi/bin/screenshot.sh";
       };
       screenshot-rasi = {
-      	source = ./config/screenshot.rasi;
-	target = "rofi/config/screenshot.rasi";
+        source = ./config/screenshot.rasi;
+        target = "rofi/config/screenshot.rasi";
       };
     };
   };

@@ -41,6 +41,10 @@ in {
                 installation_mode = "force_installed";
                 install_url = "https://addons.mozilla.org/firefox/downloads/file/4040837/raindropio-latest.xpi";
               };
+              "FirefoxColor@mozilla.com" = {
+                installation_mode = "force_installed";
+                install_url = "https://addons.mozilla.org/firefox/downloads/file/3643624/firefox_color-2.1.7.xpi";
+              };
             };
             ExtensionUpdate = true;
             OfferToSaveLogins = false;

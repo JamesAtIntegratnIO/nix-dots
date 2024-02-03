@@ -9,6 +9,8 @@ with lib; let
   cfg = config.modules.desktop;
 in {
   imports = [
+    ./hyprland
+    ./kitty
     ./qt
     ./rofi
     ./waybar

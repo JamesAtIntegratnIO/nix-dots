@@ -57,6 +57,12 @@ in {
                 version = "0.3.1";
                 sha256 = "sha256-7YfmRMhC+HFmYgYtyHWrzSi7PZS3tdDHly9S1kDMmjY=";
               }
+              {
+                name = "catppuccin-vsc";
+                publisher = "Catppuccin";
+                version = "3.11.0";
+                sha256 = "sha256-jUSYheKalC4mBlSr2iEXb4d/p76IbtgQqKvftG/of4k=";
+              }
             ];
         })
       ];
