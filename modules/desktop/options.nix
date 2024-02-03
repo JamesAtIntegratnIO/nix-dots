@@ -16,12 +16,21 @@ with lib; {
       '';
       example = "waybar";
     };
-    theme = mkOption {
-      type = types.enum ["frappe" "latte" "macchiato" "mocha"];
-      default = "macchiato";
-      description = ''
-        The theme to use.
-      '';
+    theme = {
+      name = mkOption {
+        type = types.enum ["frappe" "latte" "macchiato" "mocha"];
+        default = "macchiato";
+        description = ''
+          The theme to use.
+        '';
+      };
+      style = mkOption {
+        type = types.enum [null "adwaita" "adwaita-dark" "adwaita-highcontrast" "adwaita-highcontrastinverse" "bb10bright" "bb10dark" "breeze" "cde" "cleanlooks" "gtk2" "kvantum" "motif" "plastique"];
+        default = "adwaita-dark";
+        description = ''
+          The style to use.
+        '';
+      };
     };
 
     screenWidth = mkOption {

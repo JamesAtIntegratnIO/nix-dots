@@ -99,7 +99,7 @@ with lib; let
       tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
       tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
-      on-click = "sleep 0.1 && /usr/bin/env rofi-bluetooth";
+      on-click = "sleep 0.1 && /usr/bin/env rofi-bluetooth --theme ~/.config/rofi/config/bluetooth.rasi";
     };
     network = {
       format-wifi = "{essid} ({signalStrength}%) ";
@@ -107,7 +107,7 @@ with lib; let
       format-linked = "{ifname} (No IP) ";
       format-disconnected = "Disconnected ⚠";
       format-alt = "{ifname}: {ipaddr}/{cidr}";
-      on-click = "sleep 0.1 && /usr/bin/env rofi-wifi-menu";
+      on-click = "sleep 0.1 && /usr/bin/env rofi-wifi-menu --theme ~/.config/rofi/config/networkmenu.rasi";
     };
     pulseaudio = {
       format = "{volume}% {icon} {format_source}";
@@ -132,9 +132,6 @@ with lib; let
     };
   };
 in {
-  imports = [
-    ./css
-  ];
   config = mkIf ((cfg.desktop == "hyprland") && (cfg.panel == "waybar")) {
     environment.systemPackages = with pkgs; [
       waybar

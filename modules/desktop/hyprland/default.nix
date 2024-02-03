@@ -20,8 +20,6 @@ with lib; let
 
   username = import ../../../username.nix;
   cfg = config.modules.desktop;
-
-  rofi-wifi-menu = pkgs.writeScriptBin "rofi-wifi-menu" (builtins.readFile ./rofi-wifi-menu.sh);
 in {
   imports = [
     ./config.nix
@@ -43,7 +41,7 @@ in {
         fonts.fontconfig.enable = true;
         environment.systemPackages = with pkgs; [
           inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-          rofi-wifi-menu
+
           wl-clipboard
         ];
         xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk];
@@ -53,9 +51,6 @@ in {
         home-manager.users.${username} = {
           home.packages = with pkgs; [
             dolphin
-            rofi-wayland
-            rofi-power-menu
-            rofi-bluetooth
             brightnessctl
             dunst
             lid
@@ -74,11 +69,6 @@ in {
             "hypr/rokid-attached.sh".source = ./rokid-attached.sh;
             "hypr/rokid-detached.sh".source = ./rokid-detached.sh;
           };
-        };
-        qt = {
-          enable = true;
-          platformTheme = "qt5ct";
-          style = "kvantum";
         };
       }
     )

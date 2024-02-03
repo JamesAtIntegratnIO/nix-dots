@@ -21,7 +21,7 @@ in {
               "$terminal" = "kitty";
               "$fileManager" = "dolphin";
               "$browser" = "firefox";
-              "$menu" = "rofi -show drun";
+              "$menu" = "bash /home/${username}/.config/rofi/bin/launcher.sh";
               "$mainMod" = "SUPER";
 
               "$lockCommand" = "gtklock -T 60 -H -i";
@@ -192,11 +192,12 @@ in {
                 "$mainMod, mouse_down, workspace, e+1"
                 "$mainMod, mouse_up, workspace, e-1"
                 # Screenshot Area
+		"$mainMod, S, exec, bash /home/${username}/.config/rofi/bin/screenshot.sh"
                 "$mainMod SHIFT, S, exec, grimblast copy area"
                 # Lockscreen
                 "$mainMod SHIFT, L, exec, $lockCommand"
                 # Rofi
-                "$mainMod SHIFT, P, exec, rofi -show p -modi p:rofi-power-menu"
+                "$mainMod SHIFT, P, exec, bash /home/${username}/.config/rofi/bin/powermenu.sh"
                 "$mainMod SHIFT, B, exec, rofi-bluetooth"
                 # Mute
                 ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"

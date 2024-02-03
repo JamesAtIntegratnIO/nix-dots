@@ -159,25 +159,25 @@ in {
     home-manager.users.${username}.xdg.configFile = {
       frappe-css = {
         target = "waybar/frappe.css";
-        source = ./frappe.css;
+        source = ./css/frappe.css;
       };
       latte-css = {
         target = "waybar/latte.css";
-        source = ./latte.css;
+        source = ./css/latte.css;
       };
       macchiato-css = {
         target = "waybar/macchiato.css";
-        source = ./macchiato.css;
+        source = ./css/macchiato.css;
       };
       mocha-css = {
         target = "waybar/mocha.css";
-        source = ./mocha.css;
+        source = ./css/mocha.css;
       };
       waybar-style = {
         target = "waybar/style.css";
         text = strings.concatStrings [
           ''
-            @import "${cfg.theme}.css";
+            @import "${cfg.theme.name}.css";
           ''
           css
         ];
