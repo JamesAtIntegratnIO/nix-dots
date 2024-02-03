@@ -33,6 +33,7 @@ in {
               ms-vscode-remote.remote-ssh
               redhat.vscode-yaml
               hashicorp.terraform
+              kamikillerto.vscode-colorize
 
               # Extensions for my KB
               foam.foam-vscode

@@ -16,6 +16,13 @@ with lib; {
       '';
       example = "waybar";
     };
+    theme = mkOption {
+      type = types.enum ["frappe" "latte" "macchiato" "mocha"];
+      default = "macchiato";
+      description = ''
+        The theme to use.
+      '';
+    };
 
     screenWidth = mkOption {
       type = types.int;

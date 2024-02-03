@@ -26,7 +26,6 @@ in {
   imports = [
     ./config.nix
     ./hyprpaper.nix
-    ./waybar.nix
     ./nwg-panel.nix
     ./hyprland-monitor-attached.nix
     ./nvidia.nix
@@ -76,11 +75,11 @@ in {
             "hypr/rokid-detached.sh".source = ./rokid-detached.sh;
           };
         };
-	qt = {
-	  enable = true;
-	  platformTheme = "qt5ct";
-	  style = "kvantum";
-	};
+        qt = {
+          enable = true;
+          platformTheme = "qt5ct";
+          style = "kvantum";
+        };
       }
     )
   ];

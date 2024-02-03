@@ -14,18 +14,22 @@ with lib; let
     layer = "top";
     modules-left = ["hyprland/workspaces" "hyprland/mode"];
     modules-right = [
-      "idle_inhibitor"
       "pulseaudio"
+      "backlight"
+      "battery"
+      "idle_inhibitor"
+
+      "clock"
+      "tray"
+
       "bluetooth"
       "network"
+
       "cpu"
       "memory"
       "temperature"
-      "backlight"
-      "battery"
-      "tray"
     ];
-    modules-center = ["clock"];
+    modules-center = [];
     "hyprland/mode" = {format = ''<span style="italic">{}</span>'';};
     "hyprland/workspaces" = {
       all-outputs = true;
@@ -128,6 +132,9 @@ with lib; let
     };
   };
 in {
+  imports = [
+    ./css
+  ];
   config = mkIf ((cfg.desktop == "hyprland") && (cfg.panel == "waybar")) {
     environment.systemPackages = with pkgs; [
       waybar
@@ -143,162 +150,6 @@ in {
           target = "waybar/scripts/audio-switch.sh";
           source = ./audio-switch.sh;
         };
-      };
-
-      xdg.configFile.waybar-style = {
-        target = "waybar/style.css";
-        text = ''
-          * {
-              border: none;
-              border-radius: 0;
-              font-family: Hack, FontAwesome5Free;
-              font-size: 13px;
-              min-height: 0;
-          }
-
-          window#waybar {
-              background-color: rgba(43, 48, 59, 0.5);
-              border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-              color: #ffffff;
-              transition-property: background-color;
-              transition-duration: .5s;
-          }
-
-          window#waybar.hidden {
-              opacity: 0.2;
-          }
-
-          #workspaces button {
-              padding: 0 5px;
-              background-color: transparent;
-              color: #ffffff;
-              border-bottom: 3px solid transparent;
-          }
-
-          #workspaces button:hover {
-              background: rgba(0, 0, 0, 0.2);
-              box-shadow: inherit;
-              border-bottom: 3px solid #ffffff;
-          }
-
-          #workspaces button.focused {
-              background-color: #64727D;
-              border-bottom: 3px solid #ffffff;
-          }
-
-          #workspaces button.urgent {
-              background-color: #eb4d4b;
-          }
-
-          #mode {
-              background-color: #64727D;
-              border-bottom: 3px solid #ffffff;
-          }
-
-          #clock,
-          #battery,
-          #cpu,
-          #memory,
-          #temperature,
-          #backlight,
-          #network,
-          #pulseaudio,
-          #custom-media,
-          #tray,
-          #mode,
-          #idle_inhibitor {
-            padding: 0 10px;
-            margin: 0 4px;
-            color: #ffffff;
-          }
-
-          #clock {
-              background-color: #64727D;
-          }
-
-          #battery {
-              background-color: #ffffff;
-              color: #000000;
-          }
-
-          #battery.charging {
-              color: #ffffff;
-              background-color: #26A65B;
-          }
-
-          @keyframes blink {
-              to {
-                  background-color: #ffffff;
-                  color: #000000;
-              }
-          }
-
-          #battery.critical:not(.charging) {
-              background-color: #f53c3c;
-              color: #ffffff;
-              animation-name: blink;
-              animation-duration: 0.5s;
-              animation-timing-function: linear;
-              animation-iteration-count: infinite;
-              animation-direction: alternate;
-          }
-
-          label:focus {
-              background-color: #000000;
-          }
-
-          #cpu {
-              background-color: #2ecc71;
-              color: #000000;
-          }
-
-          #memory {
-              background-color: #9b59b6;
-          }
-
-          #backlight {
-              background-color: #90b1b1;
-          }
-
-          #network {
-              background-color: #2980b9;
-          }
-
-          #network.disconnected {
-              background-color: #f53c3c;
-          }
-
-          #pulseaudio {
-              background-color: #f1c40f;
-              color: #000000;
-          }
-
-          #pulseaudio.muted {
-              background-color: #90b1b1;
-              color: #2a5c45;
-          }
-
-          #temperature {
-              background-color: #f0932b;
-          }
-
-          #temperature.critical {
-              background-color: #eb4d4b;
-          }
-
-          #tray {
-              background-color: #2980b9;
-          }
-
-          #idle_inhibitor {
-              background-color: #2d3436;
-          }
-
-          #idle_inhibitor.activated {
-              background-color: #ecf0f1;
-              color: #2d3436;
-          }
-        '';
       };
     };
   };
