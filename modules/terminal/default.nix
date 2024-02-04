@@ -12,6 +12,7 @@ in {
   imports = [
     ./options.nix
     ./zsh
+    ./tmux
   ];
 
   config = mkMerge [
@@ -25,7 +26,6 @@ in {
           binutils
           bottom
           inxi
-          tmux
           cht-sh
           openssl
         ];

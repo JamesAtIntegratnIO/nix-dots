@@ -13,5 +13,6 @@ with lib; {
       description = "The default shell to use";
       example = "zsh";
     };
+    tmux = mkEnableOption "Enable Tmux";
   };
 }

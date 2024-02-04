@@ -8,15 +8,10 @@
 with lib; let
   cfg = config.modules.editor;
   username = import ../../../username.nix;
-  vimLsp = import ./lsp.nix;
 in {
   imports = [
-    ./plugins/startify.nix
     ./keymaps.nix
-    ./plugins/lsp.nix
-    ./plugins/conform-nvim.nix
-    ./plugins/nvim-tree.nix
-    ./plugins/telescope.nix
+		./plugins
   ];
   config = mkMerge [
     (mkIf cfg.neovim {
@@ -31,6 +26,7 @@ in {
           fd
           zig
           shfmt
+          nixd
         ];
 
         colorschemes.catppuccin = {
@@ -49,14 +45,6 @@ in {
         };
 
         globals.mapleader = ",";
-
-        plugins = {
-          gitgutter.enable = true;
-          treesitter.enable = true;
-          nvim-autopairs.enable = true;
-          which-key.enable = true;
-          barbar.enable = true;
-        };
       };
     })
   ];
