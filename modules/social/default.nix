@@ -16,9 +16,11 @@ in {
     (mkIf (cfg.discord && (graphics.type != null)) {
       users.users.${username} = {
         packages = with pkgs; [
-          discord-ptb
-          discord-screenaudio
-          xwaylandvideobridge
+          (discord.override {
+            withOpenASAR = true;
+            withVencord = true;
+          })
+          vesktop
         ];
       };
     })

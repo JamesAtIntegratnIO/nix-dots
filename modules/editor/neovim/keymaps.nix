@@ -1,5 +1,5 @@
 [
-	  # NvimTree	 
+  # NvimTree
   {
     key = "<leader>ft";
     action = "<cmd>NvimTreeToggle<CR>";
@@ -20,6 +20,10 @@
   {
     key = "<leader>fp";
     action = "<cmd>Telescope git_files<CR>";
+  }
+  {
+    key = "<leader>of";
+    action = "<cmd>Telescope oldfiles<CR>";
   }
   # Map escape for terminal :tnoremap <Esc> <C-\><C-n>
   {
