@@ -53,7 +53,7 @@
       ];
       highlight = "String";
       defaultColor = "";
-      oldfilesAmount = 0;
+      oldfilesAmount = 5;
     };
   };
 }

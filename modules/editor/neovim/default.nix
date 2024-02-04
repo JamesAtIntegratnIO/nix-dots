@@ -16,11 +16,23 @@ in {
     (mkIf cfg.neovim {
       programs.nixvim = {
         enable = true;
+        extraPackages = with pkgs; [
+          alejandra
+          stylua
+          rust-analyzer
+          rustc
+          go
+          ripgrep
+          fd
+          zig
+          marksman
+          shfmt
+        ];
         colorschemes.catppuccin = {
           enable = true;
           flavour = "macchiato";
           dimInactive = {
-            enable = true;
+            enabled = true;
             percentage = 0.15;
           };
         };
@@ -31,7 +43,31 @@ in {
         globals.mapleader = ",";
         keymaps = vimKeymaps;
         plugins = {
+          gitgutter = {
+            enable = true;
+            recommendedSettings = true;
+          };
           lsp = vimLsp;
+          conform-nvim = {
+            enable = true;
+            formattersByFt = {
+              nix = ["alejandra"];
+              lua = ["stylua"];
+              javascript = ["prettierd"];
+              terraform = ["terraform_fmt"];
+              python = ["black"];
+              go = ["gofmt"];
+              rust = ["rustfmt"];
+              json = ["prettierd"];
+              yaml = ["prettierd"];
+              sh = ["shfmt"];
+            };
+            formatOnSave = {
+              lspFallback = true;
+              timeoutMs = 500;
+            };
+          };
+
           telescope = {
             enable = true;
             keymaps = {
@@ -69,15 +105,17 @@ in {
             modified = {
               enable = true;
             };
+            autoClose = true;
           };
           startup = vimStartup;
+          nvim-autopairs = {
+            enable = true;
+          };
+          which-key = {
+            enable = true;
+          };
         };
       };
-      environment.systemPackages = with pkgs; [
-        ripgrep
-        fd
-        zig
-      ];
     })
   ];
 }
