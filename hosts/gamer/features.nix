@@ -93,6 +93,9 @@ in {
         discord = true;
         slack = true;
       };
+      terminal = {
+        tmux = true;
+      };
 
       virtualisation = {
         containerVariant = "docker";
