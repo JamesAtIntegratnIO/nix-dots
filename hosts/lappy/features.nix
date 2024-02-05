@@ -19,6 +19,10 @@ in {
       desktop = {
         desktop = "hyprland";
         panel = "waybar";
+        theme = {
+          name = "macchiato";
+          style = "adwaita-dark";
+        };
       };
       displayManager = {
         greeter = "tuigreet";
@@ -32,7 +36,10 @@ in {
       editor = {
         enable = true;
         vscode = true;
+        lunarvim = false;
+        neovim = true;
       };
+      gaming.enable = false;
       graphics = {
         type = "intel";
       };

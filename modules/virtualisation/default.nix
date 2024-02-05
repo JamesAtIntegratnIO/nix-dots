@@ -74,7 +74,7 @@ in {
         pods
       ];
     })
-    (mkIf ((cfg.containerVariant == "podman") && (graphics.type == "nvidia")) {
+    (mkIf ((cfg.containerVariant == "docker") && (graphics.type == "nvidia")) {
       virtualisation.podman.enableNvidia = true;
     })
     (mkIf (cfg.containerVariant == "docker") {

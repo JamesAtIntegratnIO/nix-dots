@@ -16,7 +16,6 @@ with lib; let
     modules-right = [
       "pulseaudio"
       "backlight"
-      "battery"
       "idle_inhibitor"
 
       "clock"
@@ -27,6 +26,7 @@ with lib; let
 
       "cpu"
       "memory"
+      "battery"
       "temperature"
     ];
     modules-center = [];
