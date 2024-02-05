@@ -18,6 +18,7 @@ in {
     })
     (mkIf cfg.enable {
       networking = {
+        enableIPv6 = false;
         networkmanager = {
           enable = true;
           appendNameservers = cfg.additionalNameServers;

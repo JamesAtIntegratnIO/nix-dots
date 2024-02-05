@@ -51,6 +51,7 @@ in {
         home-manager.users.${username} = {
           home.packages = with pkgs; [
             dolphin
+            catppuccin-papirus-folders
             brightnessctl
             dunst
             lid
