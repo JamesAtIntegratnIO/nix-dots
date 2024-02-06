@@ -32,7 +32,6 @@ in {
     (
       mkIf (cfg.desktop == "hyprland") {
         programs = {
-          xwayland.enable = true;
           hyprland = {
             enable = true;
             package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -63,7 +62,6 @@ in {
           ];
           wayland.windowManager.hyprland = {
             enable = true;
-            xwayland.enable = true;
             systemd.enable = true;
           };
           xdg.configFile = {

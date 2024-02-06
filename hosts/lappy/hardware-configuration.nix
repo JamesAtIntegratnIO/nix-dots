@@ -12,7 +12,16 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_7.override {
+      argsOverride = rec {
+        src = pkgs.fetchurl {
+          url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+          sha256 = "w03kG6opxHXAg06IoxceJV/4bNMtg8a//Ct5fmC/pnE=";
+        };
+        version = "6.7.2";
+        modDirVersion = "6.7.2";
+      };
+    });
     loader = {
       systemd-boot.enable = true;
       efi = {

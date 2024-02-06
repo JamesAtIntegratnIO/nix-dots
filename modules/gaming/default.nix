@@ -8,6 +8,7 @@
 with lib; let
   cfg = config.modules.gaming;
   username = import ../../username.nix;
+  inherit (config.modules) graphics;
 in {
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
@@ -25,6 +26,10 @@ in {
         };
       };
       hardware.xpadneo.enable = true;
+
+      home-manager.users.${username} = {
+        wayland.windowManager.hyprland.xwayland.enable = true;
+      };
     })
     (mkIf cfg.steam {
       environment.systemPackages = with pkgs; [

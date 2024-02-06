@@ -31,7 +31,7 @@ in {
     })
     (mkIf (cfg.type == "nvidia") {
       environment.systemPackages = with pkgs; [
-        linuxPackages.nvidia_x11
+        # linuxPackages.nvidia_x11
         libGL
         libGLU
         libsForQt5.qtwayland
@@ -61,7 +61,7 @@ in {
           ];
         };
         nvidia = {
-          package = config.boot.kernelPackages.nvidiaPackages.stable;
+          package = config.boot.kernelPackages.nvidiaPackages.beta;
           open = false;
           modesetting.enable = true;
           nvidiaSettings = true;
