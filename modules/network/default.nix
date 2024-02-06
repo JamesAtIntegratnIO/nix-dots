@@ -18,9 +18,18 @@ in {
     })
     (mkIf cfg.enable {
       networking = {
+        dhcpcd = {
+          enable = true;
+          IPv6rs = false;
+          extraConfig = ''
+            noipv6rs
+            noipv6
+          '';
+        };
         enableIPv6 = false;
         networkmanager = {
           enable = true;
+          dhcp = "dhcpcd";
           appendNameservers = cfg.additionalNameServers;
           wifi = {
             backend = "wpa_supplicant";

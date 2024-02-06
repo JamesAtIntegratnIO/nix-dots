@@ -35,6 +35,7 @@
     };
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
+    kernel.sysctl."net.ipv6.conf.wlp5s0.disable_ipv6" = true;
   };
 
   fileSystems."/" = {
