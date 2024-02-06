@@ -20,13 +20,22 @@ in {
       ];
     })
     (mkIf (cfg.spotify == "spotifyd") {
-      environment.systemPackages = with pkgs; [
-        spotifyd
-      ];
+      services.spotifyd = {
+        enable = true;
+      };
+      networking.firewall = {
+        allowedTCPPorts = [57621];
+        allowedUDPPorts = [3353];
+      };
     })
     (mkIf (cfg.plex) {
       environment.systemPackages = with pkgs; [
         plex-media-player
+      ];
+    })
+    (mkIf (cfg.netflix) {
+      environment.systemPackages = with pkgs; [
+        netflix
       ];
     })
   ];

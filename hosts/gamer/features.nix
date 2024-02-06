@@ -58,8 +58,9 @@ in {
         type = "nvidia";
       };
       media = {
-        spotify = "spotify-tui";
+        spotify = "spotifyd";
         plex = true;
+        netflix = true;
       };
       network = {
         enable = true;
@@ -98,6 +99,7 @@ in {
       };
 
       virtualisation = {
+        vmVariant = ["qemu" "libvirtd"];
         containerVariant = "docker";
       };
     };

@@ -7,5 +7,6 @@ with lib; {
       description = "Spotify client to use.";
     };
     plex = mkEnableOption "plex";
+    netflix = mkEnableOption "install netflix as dedicated chrome window";
   };
 }

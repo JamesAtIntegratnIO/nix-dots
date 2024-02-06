@@ -2,8 +2,9 @@
 with lib; {
   options.modules.virtualisation = {
     vmVariant = mkOption {
-      type = types.enum ["qemu" null];
-      default = "qemu";
+      type = types.listOf types.str;
+      default = ["qemu"];
+      example = ["qemu" "libvirtd"];
       description = ''
         The virtualisation variant to use.
       '';

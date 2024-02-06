@@ -10,9 +10,12 @@ with lib; let
   cfg = config.modules.virtualisation;
   inherit (config.modules) graphics;
 in {
-  imports = [./options.nix];
+  imports = [
+    ./options.nix
+    ./virtlibd.nix
+  ];
   config = mkMerge [
-    (mkIf (cfg.vmVariant == "qemu") {
+    (mkIf (builtins.elem "qemu" cfg.vmVariant) {
       virtualisation.vmVariant = {
         # following configuration is added only when building VM with build-vm
         virtualisation = {
