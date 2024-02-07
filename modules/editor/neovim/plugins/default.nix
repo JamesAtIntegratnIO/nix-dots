@@ -7,11 +7,14 @@ with lib; let
   cfg = config.modules.editor;
 in {
   imports = [
+    ./comment-nvim.nix
+    ./coq.nix
     ./startify.nix
     ./lsp.nix
     ./conform-nvim.nix
     ./nvim-tree.nix
     ./telescope.nix
+    ./treesitter.nix
   ];
 
   config = mkIf cfg.neovim {

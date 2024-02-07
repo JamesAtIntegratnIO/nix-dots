@@ -12,7 +12,7 @@ with lib; let
 in {
   imports = [
     ./options.nix
-    ./virtlibd.nix
+    ./libvirtd.nix
   ];
   config = mkMerge [
     (mkIf (builtins.elem "qemu" cfg.vmVariant) {
