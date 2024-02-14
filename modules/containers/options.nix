@@ -16,5 +16,8 @@ with lib; {
     sillytavern = {
       enable = mkEnableOption "enable";
     };
+    qdrant = {
+      enable = mkEnableOption "enable qdrant vector store";
+    };
   };
 }

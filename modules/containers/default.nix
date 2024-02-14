@@ -76,6 +76,19 @@ in {
         8080
       ];
     })
+    (mkIf ((cfg.qdrant.enable) && (virtualisation.containerVariant == "docker")) {
+      virtualisation.oci-containers.containers.qdrant = {
+        image = "qdrant/qdrant:latest";
+
+        extraOptions = ["--network=host"];
+
+        ports = ["6333" "6334"];
+
+        volumes = [
+          "/mnt/storage/ollama/qdrant:/qdrant/storage"
+        ];
+      };
+    })
     (mkIf ((cfg.sillytavern.enable) && (virtualisation.containerVariant == "docker")) {
       virtualisation.oci-containers.containers.sillytavern = {
         image = "goolashe/sillytavern:latest";

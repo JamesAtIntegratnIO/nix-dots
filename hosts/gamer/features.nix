@@ -28,6 +28,9 @@ in {
         sillytavern = {
           enable = true;
         };
+        qdrant = {
+          enable = true;
+        };
       };
       desktop = {
         desktop = "hyprland";
