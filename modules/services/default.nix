@@ -87,5 +87,10 @@ in {
       };
       networking.firewall.allowedTCPPorts = [5900];
     })
+    (mkIf (cfg.via) {
+      services.udev.packages = with pkgs; [
+        via
+      ];
+    })
   ];
 }

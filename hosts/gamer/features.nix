@@ -92,6 +92,7 @@ in {
         cockpit = true;
         bluetooth = true;
         wayvnc = true;
+        via = true;
       };
       social = {
         discord = true;

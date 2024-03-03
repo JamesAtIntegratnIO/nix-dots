@@ -88,6 +88,10 @@ in {
           "/mnt/storage/ollama/qdrant:/qdrant/storage"
         ];
       };
+      networking.firewall.allowedTCPPorts = [
+        6333
+        6334
+      ];
     })
     (mkIf ((cfg.sillytavern.enable) && (virtualisation.containerVariant == "docker")) {
       virtualisation.oci-containers.containers.sillytavern = {

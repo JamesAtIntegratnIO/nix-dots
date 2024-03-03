@@ -10,5 +10,6 @@ with lib; {
     cockpit = mkEnableOption "Cockpit service";
     bluetooth = mkEnableOption "Bluetooth service";
     wayvnc = mkEnableOption "WayVNC service";
+    via = mkEnableOption "Via service";
   };
 }
