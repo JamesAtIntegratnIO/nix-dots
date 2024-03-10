@@ -8,6 +8,7 @@
     ./editor
     ./gaming
     ./graphics
+    ./kubernetes
     ./media
     ./network
     ./security

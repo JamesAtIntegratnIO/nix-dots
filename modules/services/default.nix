@@ -90,6 +90,10 @@ in {
     (mkIf (cfg.via) {
       services.udev.packages = with pkgs; [
         via
+        qmk-udev-rules
+      ];
+      environment.systemPackages = with pkgs; [
+        vial
       ];
     })
   ];

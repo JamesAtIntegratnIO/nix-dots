@@ -11,20 +11,20 @@ with lib; let
   inherit (config.modules) graphics;
 in {
   imports = [
-    inputs.nix-gaming.nixosModules.pipewireLowLatency
+    # inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.nix-gaming.nixosModules.steamCompat
     ./options.nix
   ];
 
   config = mkMerge [
     (mkIf cfg.enable {
-      services.pipewire = {
-        lowLatency = {
-          enable = true;
-          quantum = 64;
-          rate = 48000;
-        };
-      };
+      #  services.pipewire = {
+      #    lowLatency = {
+      #      enable = true;
+      #      quantum = 64;
+      #      rate = 48000;
+      #    };
+      #  };
       hardware.xpadneo.enable = true;
 
       home-manager.users.${username} = {

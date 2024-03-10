@@ -5,7 +5,13 @@
 }: let
   inherit (inputs) home-manager nixpkgs nixos-generators;
 
-  systemNames = ["lappy" "gamer"];
+  systemNames = [
+    "lappy"
+    "gamer"
+    "k8s-master"
+    "k8s-worker1"
+    "k8s-worker2"
+  ];
 
   base-options = {
     specialArgs = {inherit inputs self;};
