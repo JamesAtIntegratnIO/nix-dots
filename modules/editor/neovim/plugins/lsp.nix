@@ -10,7 +10,7 @@ in {
   config = mkIf cfg.neovim {
     programs.nixvim.plugins = {
       lsp = {
-        enable = true;
+        enable = false;
         enabledServers = [
           "ansiblels"
           "bashls"

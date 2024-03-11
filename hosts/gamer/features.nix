@@ -118,6 +118,10 @@ in {
         mode = "444";
       };
     };
+    #TODO DELETE THIS LATER
+    nixpkgs.config.permittedInsecurePackages = [
+      "nix-2.16.2"
+    ];
     fileSystems = {
       "/mnt/kube_storage" = {
         device = "10.0.0.12:/mnt/user/kube_storage";

@@ -54,11 +54,11 @@ in {
               exec-once = [
                 "dunst"
                 # IDLE HANDLER
-                ''
-                  swayidle -w timeout 300 "$lockCommand" \
-                              timeout 600 "hyprctl dispatch dpms off" \
-                              resume "hyprctl dispatch dpms on"
-                ''
+                # ''
+                #   swayidle -w timeout 300 "$lockCommand" \
+                #               timeout 600 "hyprctl dispatch dpms off" \
+                #               resume "hyprctl dispatch dpms on"
+                # ''
                 "/usr/bin/env hyprland-monitor-attached /run/current-system/sw/bin/rokid-attached /run/current-system/sw/bin/rokid-detached"
               ];
               input = {
@@ -147,7 +147,7 @@ in {
               # Example windowrule v2
               # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
               # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-              windowrulev2 = "nomaximizerequest, class:.* # You'll probably like this.";
+              # windowrulev2 = "nomaximizerequest, class:.* # You'll probably like this.";
 
               # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
               bind = [

@@ -39,11 +39,11 @@ in {
         enable = true;
         remotePlay.openFirewall = true;
         dedicatedServer.openFirewall = true;
-        extraCompatPackages = with pkgs; [
-          steamtinkerlaunch
-          gamescope
-          inputs.nix-gaming.packages.${pkgs.system}.proton-ge
-        ];
+        # extraCompatPackages = with pkgs; [
+        #   steamtinkerlaunch
+        #   gamescope
+        #   inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+        # ];
       };
       hardware.opengl.driSupport32Bit = true;
     })
