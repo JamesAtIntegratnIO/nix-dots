@@ -10,7 +10,6 @@ with lib; let
   username = import ../../username.nix;
 in {
   imports = [
-    ./lunarvim
     ./neovim
     ./vscode.nix
     ./vim.nix

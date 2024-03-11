@@ -48,7 +48,7 @@ in {
       editor = {
         enable = true;
         vscode = true;
-        lunarvim = true;
+        lunarvim = false;
         neovim = true;
       };
       gaming = {

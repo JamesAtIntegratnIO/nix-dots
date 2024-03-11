@@ -29,7 +29,21 @@ in {
         additionalNameServers = ["192.168.16.53"];
         ssh.enable = true;
         sshin.enable = true;
-        firewall.enable = false;
+        firewall = {
+          enable = false;
+          allowedTCPPorts = [
+            22
+            80
+            443
+            6443
+            8888
+            2379
+            2380
+            10250
+            10259
+            10257
+          ];
+        };
         tailscale = {
           enable = true;
           permitCertUid = "boboysdadda@gmail.com";
@@ -42,6 +56,8 @@ in {
         "/home/boboysdadda/.ssh/id_ed25519"
       ];
     };
+    networking.firewall.enable = false;
+    services.rpcbind.enable = true;
     fileSystems = {
       "/mnt/kube_storage" = {
         device = "10.0.0.12:/mnt/user/kube_storage";
