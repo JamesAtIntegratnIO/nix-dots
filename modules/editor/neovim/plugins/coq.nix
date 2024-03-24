@@ -12,9 +12,11 @@ in {
     programs.nixvim.plugins = {
       coq-nvim = {
         enable = true;
-        autoStart = true;
-        recommendedKeymaps = true;
-        alwaysComplete = true;
+        settings = {
+          autoStart = true;
+          recommendedKeymaps = true;
+          alwaysComplete = true;
+        };
       };
     };
   };

@@ -19,6 +19,7 @@ in {
       };
       network = {
         enable = true;
+        networkManager.enable = true;
         hostName = "k8s-worker1";
         staticIP = {
           interface = "eth0";
@@ -30,8 +31,7 @@ in {
         ssh.enable = true;
         sshin.enable = true;
         firewall = {
-          enable = false;
-          allowedTCPPorts = [22 80 443 6443 8888];
+          enable = true;
         };
         tailscale = {
           enable = true;
@@ -45,7 +45,6 @@ in {
         "/home/boboysdadda/.ssh/id_ed25519"
       ];
     };
-    networking.firewall.enable = false;
     fileSystems = {
       "/mnt/kube_storage" = {
         device = "10.0.0.12:/mnt/user/kube_storage";

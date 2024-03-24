@@ -38,7 +38,9 @@ in {
       ];
       services = {
         xserver = {
-          layout = "us";
+          xkb = {
+            layout = "us";
+          };
         };
         greetd = {
           enable = true;

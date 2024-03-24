@@ -27,14 +27,20 @@ in {
           '';
         };
         enableIPv6 = false;
-        networkmanager = {
-          enable = true;
-          dhcp = "dhcpcd";
-          appendNameservers = cfg.additionalNameServers;
-          wifi = {
-            backend = "wpa_supplicant";
-            powersave = false;
-          };
+      };
+    })
+    (mkIf cfg.networkManager.enable {
+      networking.networkmanager = {
+        enable = true;
+        dhcp = "dhcpcd";
+        appendNameservers = cfg.additionalNameServers;
+      };
+    })
+    (mkIf cfg.wifi {
+      networking.networkmanager = {
+        wifi = {
+          backend = "wpa_supplicant";
+          powersave = false;
         };
       };
     })

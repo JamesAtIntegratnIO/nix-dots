@@ -4,6 +4,11 @@ with lib; let
 in {
   options.modules.network = {
     enable = mkEnableOption "enable";
+    wifi = mkEnableOption "wifi";
+    networkManager = {
+      enable = mkEnableOption "networkManager";
+      wireless = mkEnableOption "wireless";
+    };
     hostName = mkOption {
       type = types.str;
       default = "nixos";

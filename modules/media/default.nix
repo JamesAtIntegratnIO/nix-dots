@@ -21,7 +21,7 @@ in {
     })
     (mkIf (cfg.spotify == "spotifyd") {
       services.spotifyd = {
-        enable = true;
+        enable = false;
       };
       networking.firewall = {
         allowedTCPPorts = [57621];

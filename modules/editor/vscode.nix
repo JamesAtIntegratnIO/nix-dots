@@ -18,7 +18,7 @@ in {
             [
               golang.go
               github.copilot
-              github.copilot-chat
+              # github.copilot-chat
               mhutchie.git-graph
               eamodio.gitlens
               viktorqvarfordt.vscode-pitch-black-theme
