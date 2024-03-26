@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./3d-printing
     ./browser
     ./containers
     ./desktop
