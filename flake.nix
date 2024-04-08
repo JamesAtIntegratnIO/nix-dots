@@ -32,14 +32,19 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {self, ...} @ inputs: {
-    nixosConfigurations =
-      import ./hosts
-      {
+    nixosConfigurations = import ./hosts {
         inherit inputs self;
-      };
+    };
+    darwinConfigurations = import ./hosts/darwin.nix {
+      inherit inputs self;
+    };
     packages."x86_64-linux".docs = import ./doc {
       inherit inputs self;
     };
