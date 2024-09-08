@@ -2,7 +2,7 @@
 with lib; {
   options.modules.media = {
     spotify = mkOption {
-      type = types.enum ["spotifyd" "spotify-tui" "spotify" null];
+      type = types.enum ["spotifyd" "spotify" null];
       default = null;
       description = "Spotify client to use.";
     };

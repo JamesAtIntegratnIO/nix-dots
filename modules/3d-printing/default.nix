@@ -6,7 +6,7 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.3dPrinting;
+  cfg = config.modules.threedPrinting;
 in {
   imports = [
     ./options.nix
@@ -18,5 +18,5 @@ in {
         orca-slicer
       ];
     })
-  ]
+  ];
 }

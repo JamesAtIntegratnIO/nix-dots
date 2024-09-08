@@ -44,7 +44,7 @@ in {
         type = "intel";
       };
       media = {
-        spotify = "spotify-tui";
+        spotify = "spotify";
         plex = true;
       };
       network = {

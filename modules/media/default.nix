@@ -14,11 +14,6 @@ in {
   ];
 
   config = mkMerge [
-    (mkIf (cfg.spotify == "spotify-tui") {
-      environment.systemPackages = with pkgs; [
-        spotify-tui
-      ];
-    })
     (mkIf (cfg.spotify == "spotifyd") {
       services.spotifyd = {
         enable = false;

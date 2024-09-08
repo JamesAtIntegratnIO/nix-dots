@@ -463,6 +463,26 @@
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725628909,
+        "narHash": "sha256-xI0OSqPHcs/c/utJsU0Zvcp1VhejMI9mgwr68uHHlPs=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "76559183801030451e200c90a1627c1d82bb4910",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "nix-darwin_2": {
+      "inputs": {
+        "nixpkgs": [
           "nixvim",
           "nixpkgs"
         ]
@@ -623,7 +643,7 @@
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager_3",
-        "nix-darwin": "nix-darwin",
+        "nix-darwin": "nix-darwin_2",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -678,6 +698,7 @@
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
+        "nix-darwin": "nix-darwin",
         "nix-gaming": "nix-gaming",
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
