@@ -45,11 +45,11 @@ in {
       nvidia.acceptLicencse = true;
     };
 
-    home.stateVersion = "22.11";
+    home.stateVersion = "24.05";
   };
 
   system = {
-    stateVersion = "24.05"; # Did you read the comment?
+    stateVersion = "24.11"; # Did you read the comment?
     autoUpgrade = {
       enable = true;
       flake = "${inputs.self.outPath} #${config.modules.network.hostName}";

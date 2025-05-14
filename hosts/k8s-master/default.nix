@@ -1,5 +1,5 @@
 {base-options, ...}: {
-  system = "x86_64-linux";
+  system = "aarch64-linux";
   modules =
     base-options.modules
     ++ [
