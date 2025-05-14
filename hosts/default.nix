@@ -42,14 +42,26 @@
     ];
   };
 
+  sdImage-options = {
+    specialArgs = {inherit inputs self;};
+    modules = [
+      home-manager.nixosModules.home-manager
+      ../nixos.nix
+      ../user.nix
+      ../sd-image.nix
+    ];
+  };
+
   mkSystem = sysName: nixpkgs.lib.nixosSystem ((import ./${sysName}) {inherit base-options;});
   mkLiveSystem = sysName: nixpkgs.lib.nixosSystem ((import ./${sysName}) {base-options = live-options;});
   mkProxmoxSystem = sysName: nixpkgs.lib.nixosSystem ((import ./${sysName}) {base-options = proxmox-options;});
+  mkSdImageSystem = sysName: nixpkgs.lib.nixosSystem ((import ./${sysName}) {base-options = sdImage-options;});
 
   systems = map (sysName: {${sysName} = mkSystem sysName;}) systemNames;
   liveSystems = map (sysName: {"${sysName}-live" = mkLiveSystem sysName;}) systemNames;
   proxmoxSystems = map (sysName: {"${sysName}-proxmox" = mkProxmoxSystem sysName;}) systemNames;
+  sdImageSystems = map (sysName: {"${sysName}-sd-image" = mkSdImageSystem sysName;}) systemNames;
 
-  mergedSystems = nixpkgs.lib.foldr (coming: final: final // coming) {} (systems ++ liveSystems ++ proxmoxSystems);
+  mergedSystems = nixpkgs.lib.foldr (coming: final: final // coming) {} (systems ++ liveSystems ++ proxmoxSystems ++ sdImageSystems);
 in
   mergedSystems
